@@ -62,6 +62,7 @@ add_executable(
         src/cpp/DayOneTests.cpp
         src/cpp/DayOneParser.cpp
         src/cpp/DayOneParser.h
+        src/cpp/DayOneParserTests.cpp
         src/cpp/Food.cpp
         src/cpp/Food.h
         src/cpp/Elf.cpp

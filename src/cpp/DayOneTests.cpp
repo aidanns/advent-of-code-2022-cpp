@@ -7,4 +7,4 @@ namespace AdventOfCode {
         DayOne dayOne{};
         EXPECT_EQ(10, dayOne.returnTen());
     }
-}
+} // AdventOfCode

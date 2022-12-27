@@ -1,5 +1,5 @@
-#ifndef ADVENT_OF_CODE_2022_CPP_DAYONE_H
-#define ADVENT_OF_CODE_2022_CPP_DAYONE_H
+#ifndef DAY_ONE_H
+#define DAY_ONE_H
 
 namespace AdventOfCode {
 
@@ -11,4 +11,4 @@ namespace AdventOfCode {
 
 } // AdventOfCode
 
-#endif //ADVENT_OF_CODE_2022_CPP_DAYONE_H
+#endif // DAY_ONE_H

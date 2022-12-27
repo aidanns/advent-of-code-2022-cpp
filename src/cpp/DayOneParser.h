@@ -13,9 +13,8 @@
 namespace AdventOfCode {
 
     class DayOneParser {
-        [[nodiscard]] std::vector<Elf> parseFile() const {
-            return {};
-        }
+    public:
+        [[nodiscard]] static std::vector<Elf> parseFile(const std::string& inputFilePath) ;
     };
 
 } // AdventOfCode
