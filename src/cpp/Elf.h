@@ -25,7 +25,7 @@ namespace AdventOfCode {
         static ElfBuilder builder();
 
     private:
-        const std::vector<Food> carriedFood_;
+        std::vector<Food> carriedFood_;
     };
 
 }
