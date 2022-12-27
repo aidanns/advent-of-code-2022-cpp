@@ -6,6 +6,7 @@ namespace AdventOfCode {
     class DayOne {
     public:
         int returnTen();
+        void runPuzzleOne();
     };
 
 } // AdventOfCode
