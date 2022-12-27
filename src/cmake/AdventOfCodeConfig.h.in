@@ -1,0 +1,10 @@
+#ifndef ADVENT_OF_CODE_2022_CPP_H
+#define ADVENT_OF_CODE_2022_CPP_H
+
+// These are populated by cmake during the build with a configure_file command.
+// See CMakeLists.txt for details.
+#define ADVENT_OF_CODE_VERSION_MAJOR @advent_of_code_2022_cpp_VERSION_MAJOR@
+#define ADVENT_OF_CODE_VERSION_MINOR @advent_of_code_2022_cpp_VERSION_MINOR@
+#define ADVENT_OF_CODE_VERSION_PATCH @advent_of_code_2022_cpp_VERSION_PATCH@
+
+#endif //ADVENT_OF_CODE_2022_CPP_H
