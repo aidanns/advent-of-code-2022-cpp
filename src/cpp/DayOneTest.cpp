@@ -1,6 +1,6 @@
 #include <gtest/gtest.h>
 
-#include "../main/DayOne.h"
+#include "DayOne.h"
 
 namespace AdventOfCode {
     TEST(DayOne, ReturnIntegerTest) {

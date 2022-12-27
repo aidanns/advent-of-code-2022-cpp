@@ -29,9 +29,9 @@ configure_file(src/cmake/AdventOfCodeConfig.h.in src/cpp/generated/AdventOfCodeC
 
 add_executable(
     advent_of_code_2022_cpp
-    src/cpp/main/main.cpp
-    src/cpp/main/DayOne.h
-    src/cpp/main/DayOne.cpp
+        src/cpp/main.cpp
+        src/cpp/DayOne.h
+        src/cpp/DayOne.cpp
 )
 
 target_link_libraries(
@@ -49,10 +49,10 @@ target_include_directories(
 
 add_executable(
     advent_of_code_2022_cpp_test
-    src/cpp/test/main_test.cpp
-    src/cpp/main/DayOne.h
-    src/cpp/main/DayOne.cpp
-    src/cpp/test/DayOneTest.cpp
+        src/cpp/main_test.cpp
+        src/cpp/DayOne.h
+        src/cpp/DayOne.cpp
+        src/cpp/DayOneTest.cpp
 )
 
 target_link_libraries(
