@@ -20,6 +20,7 @@ namespace AdventOfCode {
         explicit Elf(std::vector<Food> food) : carriedFood_(std::move(food)) {}
 
         [[nodiscard]] std::vector<AdventOfCode::Food> carriedFood() const;
+        [[nodiscard]] int totalCarriedCalories() const;
 
         static ElfBuilder builder();
 

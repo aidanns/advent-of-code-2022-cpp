@@ -1,6 +1,8 @@
 #include <iostream>
 
+#include "DayOne.h"
+
 int main() {
-    std::cout << "Hello, World!" << std::endl;
+    AdventOfCode::DayOne::runPuzzleOne();
     return 0;
 }
