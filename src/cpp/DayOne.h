@@ -8,6 +8,7 @@ namespace AdventOfCode::DayOne {
     void runDayOne();
 
     int puzzleOneSolution(const std::vector<Elf> &elves);
+    int puzzleOneSolutionStrawman(const std::vector<Elf> &elves);
     int puzzleTwoSolution(const std::vector<Elf> &elves);
 
 } // AdventOfCode::DayOne

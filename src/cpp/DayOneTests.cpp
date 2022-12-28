@@ -23,6 +23,14 @@ namespace AdventOfCode::DayOne {
         });
     }
 
+    TEST(DayOne, puzzleOneBenchmarkStrawman) {
+        const auto input = Parser::parseFile(Parser::kDayOneInputFilePath);
+
+        ankerl::nanobench::Bench().run("Day 1 Puzzle 1 Strawman", [&]() {
+            ankerl::nanobench::doNotOptimizeAway(DayOne::puzzleOneSolutionStrawman(input));
+        });
+    }
+
     TEST(DayOne, puzzleTwoBenchmark) {
         const auto input = Parser::parseFile(Parser::kDayOneInputFilePath);
 

@@ -18,6 +18,10 @@ namespace AdventOfCode::DayOne {
         return largestCalorieCountForElf;
     }
 
+    int puzzleOneSolutionStrawman(const std::vector<Elf> &elves) {
+        return 69528;
+    }
+
     int puzzleTwoSolution(const std::vector<Elf> & elves) {
 
         int largestCalorieCount = 0;
