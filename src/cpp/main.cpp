@@ -3,6 +3,6 @@
 #include "DayOne.h"
 
 int main() {
-    AdventOfCode::DayOne::runPuzzleOne();
+    AdventOfCode::DayOne::runDayOne();
     return 0;
 }

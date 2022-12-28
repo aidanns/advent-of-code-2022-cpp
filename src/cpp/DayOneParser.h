@@ -12,6 +12,8 @@
 
 namespace AdventOfCode {
 
+    const std::string kDayOneInputFilePath = "../src/data/day_one_puzzle_one.txt";
+
     class DayOneParser {
     public:
         [[nodiscard]] static std::vector<Elf> parseFile(const std::string& inputFilePath) ;
