@@ -41,7 +41,7 @@ namespace AdventOfCode::DayOne {
     }
 
     void runDayOne() {
-        std::vector<Elf> elves = DayOneParser::parseFile(kDayOneInputFilePath);
+        std::vector<Elf> elves = DayOneParser::parseFile(DayOneParser::kDayOneInputFilePath);
 
         std::cout << "Day 1 - Puzzle 1" << std::endl
                   << "Maximum carried by one elf is: " << puzzleOneSolution(elves) << std::endl;

@@ -6,14 +6,14 @@
 
 #include "DayOneParser.h"
 
-namespace AdventOfCode {
+namespace AdventOfCode::DayOneParser {
 
     constexpr int kDayOneInputNumberOfElves = 254;
     constexpr int kDayOneInputFirstElfFirstFoodCalories = 15560;
     constexpr int kDayOneInputFirstElfTotalCalories = 50030;
 
     TEST(DayOneParser, Parses) {
-        auto elves = DayOneParser::parseFile(kDayOneInputFilePath);
+        auto elves = parseFile(kDayOneInputFilePath);
 
         EXPECT_EQ(kDayOneInputNumberOfElves, elves.size());
         EXPECT_EQ(kDayOneInputFirstElfFirstFoodCalories, elves.at(0).carriedFood().at(0).calories());
