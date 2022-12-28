@@ -6,11 +6,9 @@
 #include "DayOneParser.h"
 #include "Elf.h"
 
-namespace AdventOfCode {
+namespace AdventOfCode::DayOne {
 
-
-
-    int DayOne::puzzleOneSolution(const std::vector<Elf> & elves) {
+    int puzzleOneSolution(const std::vector<Elf> & elves) {
         int largestCalorieCountForElf = 0;
         for (const auto & elf : elves) {
             if (elf.totalCarriedCalories() > largestCalorieCountForElf) {
@@ -20,7 +18,7 @@ namespace AdventOfCode {
         return largestCalorieCountForElf;
     }
 
-    int DayOne::puzzleTwoSolution(const std::vector<Elf> & elves) {
+    int puzzleTwoSolution(const std::vector<Elf> & elves) {
 
         int largestCalorieCount = 0;
         int secondLargestCalorieCount = 0;
@@ -42,7 +40,7 @@ namespace AdventOfCode {
         return largestCalorieCount + secondLargestCalorieCount + thirdLargestCalorieCount;
     }
 
-    void DayOne::runDayOne() {
+    void runDayOne() {
         std::vector<Elf> elves = DayOneParser::parseFile(kDayOneInputFilePath);
 
         std::cout << "Day 1 - Puzzle 1" << std::endl

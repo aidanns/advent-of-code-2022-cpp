@@ -3,15 +3,13 @@
 
 #include "Elf.h"
 
-namespace AdventOfCode {
+namespace AdventOfCode::DayOne {
 
-    class DayOne {
-    public:
-        static void runDayOne();
-        static int puzzleOneSolution(const std::vector<Elf> &elves);
-        static int puzzleTwoSolution(const std::vector<Elf> &elves);
-    };
+    void runDayOne();
 
-} // AdventOfCode
+    int puzzleOneSolution(const std::vector<Elf> &elves);
+    int puzzleTwoSolution(const std::vector<Elf> &elves);
+
+} // AdventOfCode::DayOne
 
 #endif // DAY_ONE_H
