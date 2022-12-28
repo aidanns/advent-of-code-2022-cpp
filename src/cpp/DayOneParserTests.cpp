@@ -6,7 +6,7 @@
 
 #include "DayOneParser.h"
 
-namespace AdventOfCode::DayOneParser {
+namespace AdventOfCode::DayOne::Parser {
 
     constexpr int kDayOneInputNumberOfElves = 254;
     constexpr int kDayOneInputFirstElfFirstFoodCalories = 15560;

@@ -10,12 +10,12 @@
 
 #include "Elf.h"
 
-namespace AdventOfCode::DayOneParser {
+namespace AdventOfCode::DayOne::Parser {
 
     const std::string kDayOneInputFilePath = "../src/data/day_one_puzzle_one.txt";
 
     std::vector<Elf> parseFile(const std::string &inputFilePath);
 
-} // AdventOfCode::DayOneParser
+} // AdventOfCode::DayOne::Parser
 
 #endif // DAY_ONE_PARSER_H

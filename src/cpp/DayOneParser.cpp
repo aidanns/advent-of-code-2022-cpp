@@ -6,7 +6,7 @@
 
 #include <iostream>
 
-namespace AdventOfCode::DayOneParser {
+namespace AdventOfCode::DayOne::Parser {
 
     std::vector<Elf> parseFile(const std::string &inputFilePath) {
         // TODO(aidanns): Handle the case where the path isn't a file or can't be read.
@@ -31,4 +31,4 @@ namespace AdventOfCode::DayOneParser {
 
         return parsedElves;
     }
-} // AdventOfCode::DayOneParser
+} // AdventOfCode::DayOne::Parser
