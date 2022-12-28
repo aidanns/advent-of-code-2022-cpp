@@ -8,15 +8,18 @@ include(FetchContent)
 FetchContent_Declare(
         googletest
         GIT_REPOSITORY https://github.com/google/googletest.git
-        GIT_TAG release-1.12.1
-)
+        GIT_TAG release-1.12.1)
 FetchContent_Declare(asio
         GIT_REPOSITORY git@github.com:chriskohlhoff/asio.git
         GIT_TAG asio-1-24-0
         CONFIGURE_COMMAND ""
-        BUILD_COMMAND ""
-        )
-FetchContent_MakeAvailable(googletest asio)
+        BUILD_COMMAND "")
+FetchContent_Declare(
+        nanobench
+        GIT_REPOSITORY https://github.com/martinus/nanobench.git
+        GIT_TAG v4.3.9
+        GIT_SHALLOW TRUE)
+FetchContent_MakeAvailable(asio googletest nanobench)
 
 add_library(asio INTERFACE)
 target_include_directories(asio INTERFACE ${asio_SOURCE_DIR}/asio/include)
@@ -75,8 +78,9 @@ add_executable(
 target_link_libraries(
         advent_of_code_2022_cpp_test PUBLIC
         ${EXTRA_LIBS}
-        GTest::gtest_main
         asio
+        GTest::gtest_main
+        nanobench
 )
 
 target_include_directories(
