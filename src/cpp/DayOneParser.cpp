@@ -17,9 +17,8 @@ namespace AdventOfCode::DayOne::Parser {
         std::string line;
         auto elfBuilder = Elf::builder();
 
-        // Get the input from the input file until EOF
+        // Get the input from the input file until EOF.
         while (std::getline(infile, line)) {
-
             if (!line.empty()) {
                 // TODO(aidanns): Handle the case where we have a malformed line.
                 elfBuilder.addFood(Food{std::stoi(line)});
