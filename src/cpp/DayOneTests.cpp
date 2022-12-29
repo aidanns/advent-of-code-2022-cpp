@@ -38,4 +38,10 @@ namespace AdventOfCode::DayOne {
             ankerl::nanobench::doNotOptimizeAway(DayOne::puzzleTwoSolution(input));
         });
     }
+
+    TEST(DayOne, parseBenchmark) {
+        ankerl::nanobench::Bench().run("Day 1 Parse", [&]() {
+            ankerl::nanobench::doNotOptimizeAway(Parser::parseFile(Parser::kDayOneInputFilePath));
+        });
+    }
 } // AdventOfCode
