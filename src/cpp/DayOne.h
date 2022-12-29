@@ -5,7 +5,7 @@
 
 namespace AdventOfCode::DayOne {
 
-    void runDayOne();
+    void run();
 
     int puzzleOneSolution(const std::vector<Elf> &elves);
     int puzzleOneSolutionStrawman(const std::vector<Elf> &elves);

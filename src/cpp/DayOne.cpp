@@ -44,7 +44,7 @@ namespace AdventOfCode::DayOne {
         return largestCalorieCount + secondLargestCalorieCount + thirdLargestCalorieCount;
     }
 
-    void runDayOne() {
+    void run() {
         std::vector<Elf> elves = Parser::parseFile(Parser::kDayOneInputFilePath);
 
         std::cout << "Day 1 - Puzzle 1" << std::endl
