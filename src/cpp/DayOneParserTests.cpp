@@ -3,8 +3,10 @@
 //
 
 #include <gtest/gtest.h>
+#include <nanobench.h>
 
 #include "DayOneParser.h"
+#include "Elf.h"
 
 namespace AdventOfCode::DayOne::Parser {
 
@@ -18,5 +20,21 @@ namespace AdventOfCode::DayOne::Parser {
         EXPECT_EQ(kDayOneInputNumberOfElves, elves.size());
         EXPECT_EQ(kDayOneInputFirstElfFirstFoodCalories, elves.at(0).carriedFood().at(0).calories());
         EXPECT_EQ(kDayOneInputFirstElfTotalCalories, elves.at(0).totalCarriedCalories());
+    }
+
+    TEST(DayOneParser, benchmarkParseComplete) {
+        ankerl::nanobench::Bench().run("Day 1 Parse - Batch", [&]() {
+            ankerl::nanobench::doNotOptimizeAway(Parser::parseFile(Parser::kDayOneInputFilePath));
+        });
+    }
+
+    TEST(DayOneParser, benchmarkParseWithCallback) {
+        ankerl::nanobench::Bench().run("Day 1 Parse - Callback", [&]() {
+            std::vector<Elf> elves;
+            Parser::parseFile(Parser::kDayOneInputFilePath,[&](const Elf &elf) {
+                   elves.push_back(elf);
+               });
+            ankerl::nanobench::doNotOptimizeAway(elves);
+        });
     }
 } // AdventOfCode

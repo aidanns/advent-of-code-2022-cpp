@@ -23,10 +23,23 @@ namespace AdventOfCode::DayOne {
         });
     }
 
-    TEST(DayOne, puzzleOneBenchmarkStrawman) {
+    TEST(DayOne, benchmarkParseAndPuzzleOne) {
+        ankerl::nanobench::Bench().run("Day 1 Puzzle 1: +Parse +Storage", [&]() {
+            const auto input = Parser::parseFile(Parser::kDayOneInputFilePath);
+            ankerl::nanobench::doNotOptimizeAway(DayOne::puzzleOneSolution(input));
+        });
+    }
+
+    TEST(DayOne, benchmarkParseAndPuzzleOneNoStorage) {
+        ankerl::nanobench::Bench().run("Day 1 Puzzle 1: +Parse -Storage", [&]() {
+            ankerl::nanobench::doNotOptimizeAway(DayOne::puzzleOneSolutionWithoutStorage());
+        });
+    }
+
+    TEST(DayOne, benchmarkPuzzleOneStrawman) {
         const auto input = Parser::parseFile(Parser::kDayOneInputFilePath);
 
-        ankerl::nanobench::Bench().run("Day 1 Puzzle 1 Strawman", [&]() {
+        ankerl::nanobench::Bench().run("Day 1 Puzzle 1: Strawman", [&]() {
             ankerl::nanobench::doNotOptimizeAway(DayOne::puzzleOneSolutionStrawman(input));
         });
     }
@@ -36,12 +49,6 @@ namespace AdventOfCode::DayOne {
 
         ankerl::nanobench::Bench().run("Day 1 Puzzle 2", [&]() {
             ankerl::nanobench::doNotOptimizeAway(DayOne::puzzleTwoSolution(input));
-        });
-    }
-
-    TEST(DayOne, parseBenchmark) {
-        ankerl::nanobench::Bench().run("Day 1 Parse", [&]() {
-            ankerl::nanobench::doNotOptimizeAway(Parser::parseFile(Parser::kDayOneInputFilePath));
         });
     }
 } // AdventOfCode
