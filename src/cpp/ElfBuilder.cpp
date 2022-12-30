@@ -4,6 +4,8 @@
 
 #include "ElfBuilder.h"
 
+#include <vector>
+
 #include "Elf.h"
 
 namespace AdventOfCode {
@@ -15,6 +17,10 @@ namespace AdventOfCode {
 
     Elf ElfBuilder::build() {
         return Elf{carriedFood_};
+    }
+
+    void ElfBuilder::reset() {
+        carriedFood_ = std::vector<Food>{};
     }
 
 } // AdventOfCode

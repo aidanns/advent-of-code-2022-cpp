@@ -21,6 +21,11 @@ namespace AdventOfCode {
         ElfBuilder addFood(const Food &food);
 
         Elf build();
+
+        /**
+         * Resets the builder, equivalent to creation of a new builder.
+         */
+        void reset();
     private:
         std::vector<Food> carriedFood_;
     };

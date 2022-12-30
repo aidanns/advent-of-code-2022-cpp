@@ -12,6 +12,8 @@
 
 namespace AdventOfCode::DayOne::Parser {
 
+    using HandleElfCallbackFunction = std::function<void(const Elf &)>;
+
     const std::string kDayOneInputFilePath = "../src/data/day_one_puzzle_one.txt";
 
     /**
@@ -28,7 +30,7 @@ namespace AdventOfCode::DayOne::Parser {
      * @param inputFilePath path to read from
      * @param handleElfCallback callback to process each parsed Elf
      */
-    void parseFile(const std::string &inputFilePath, std::function<void(Elf)> &&handleElfCallback);
+    void parseFile(const std::string &inputFilePath, const HandleElfCallbackFunction &&handleElfCallback);
 } // AdventOfCode::DayOne::Parser
 
 #endif // DAY_ONE_PARSER_H
