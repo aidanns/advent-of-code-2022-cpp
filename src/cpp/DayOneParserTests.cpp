@@ -37,4 +37,4 @@ namespace AdventOfCode::DayOne::Parser {
             ankerl::nanobench::doNotOptimizeAway(elves);
         });
     }
-} // AdventOfCode
+} // AdventOfCode::DayOne::Parser

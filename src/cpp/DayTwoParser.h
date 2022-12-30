@@ -12,15 +12,15 @@
 
 namespace AdventOfCode::DayTwo::Parser {
 
-    const std::string kDayOneInputFilePath = "../src/data/input_day_two.txt";
+    const std::string kDayTwoInputFilePath = "../src/data/input_day_two.txt";
 
     /**
      * Parse the complete file.
      *
-     * @param inputFilePath path to read from
+     * @param round path to read from
      * @return all Rock, Paper, Scissors game rounds parsed from the file
      */
-    std::vector<RockPaperScissors::Round> parseFile(const std::string &inputFilePath);
+    std::vector<RockPaperScissors::Round> parseFile(const std::string &round);
 
     /**
      * Parse the file one round at a time, providing each one to a specified handler.

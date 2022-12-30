@@ -83,7 +83,7 @@ add_executable(
         src/cpp/DayTwoParser.h
         src/cpp/RockPaperScissors.cpp
         src/cpp/RockPaperScissors.h
-        src/cpp/RockPaperScissorsTests.cpp)
+        src/cpp/RockPaperScissorsTests.cpp src/cpp/DayTwoParserTests.cpp)
 
 target_link_libraries(
         advent_of_code_2022_cpp_test PUBLIC
