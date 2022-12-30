@@ -17,6 +17,15 @@ namespace AdventOfCode::DayTwo::RockPaperScissors {
     };
 
     /**
+     * The result from a round.
+     */
+    enum Result {
+        kPlayerOneWin,
+        kDraw,
+        kPlayerTwoWin
+    };
+
+    /**
      * Represents a round of the game, with a selection made by two separate players.
      */
     class Round {
@@ -30,12 +39,12 @@ namespace AdventOfCode::DayTwo::RockPaperScissors {
     };
 
     /**
-     * Returns the points awarded to a player for making a given selection.
+     * Returns the result from a round.
      *
-     * @param selection the selection made
-     * @return the point value awarded as a result
+     * @param round the round to assess
+     * @return the result of the round
      */
-    int pointValueForSelection(const Selection &selection);
+    Result resultFromRound(const Round &round);
 }
 
 #endif // ROCK_PAPER_SCISSORS_H

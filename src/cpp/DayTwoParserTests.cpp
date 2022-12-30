@@ -14,7 +14,7 @@ namespace AdventOfCode::DayTwo::Parser {
     constexpr RockPaperScissors::Selection kRoundOnePlayerTwoSelection = RockPaperScissors::Selection::kPaper;
 
     TEST(DayTwoParser, Parses) {
-        auto rounds = parseFile(kDayTwoInputFilePath);
+        auto rounds = parseFilePuzzleOne(kDayTwoInputFilePath);
 
         EXPECT_EQ(kDayOneInputNumberOfRounds, rounds.size());
         EXPECT_EQ(kRoundOnePlayerOneSelection, rounds.at(0).playerOneSelection());
@@ -23,14 +23,14 @@ namespace AdventOfCode::DayTwo::Parser {
 
     TEST(DayTwoParser, benchmarkParseComplete) {
         ankerl::nanobench::Bench().run("Day 2 Parse - Batch", [&]() {
-            ankerl::nanobench::doNotOptimizeAway(Parser::parseFile(Parser::kDayTwoInputFilePath));
+            ankerl::nanobench::doNotOptimizeAway(Parser::parseFilePuzzleOne(Parser::kDayTwoInputFilePath));
         });
     }
 
     TEST(DayTwoParser, benchmarkParseWithCallback) {
         ankerl::nanobench::Bench().run("Day 2 Parse - Callback", [&]() {
             std::vector<RockPaperScissors::Round> rounds;
-            Parser::parseFile(Parser::kDayTwoInputFilePath,[&](const RockPaperScissors::Round &elf) {
+            Parser::parseFilePuzzleOne(Parser::kDayTwoInputFilePath, [&](const RockPaperScissors::Round &elf) {
                 rounds.push_back(elf);
             });
             ankerl::nanobench::doNotOptimizeAway(rounds);

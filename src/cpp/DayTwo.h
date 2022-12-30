@@ -27,7 +27,7 @@ namespace AdventOfCode::DayTwo {
      * @param input input for day two
      * @return the result for puzzle one
      */
-    int puzzleOneSolution(const Input &input);
+    int puzzleSolution(const Input &input);
 }
 
 #endif // DAY_TWO_H

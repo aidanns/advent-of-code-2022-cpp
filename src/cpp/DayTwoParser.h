@@ -17,20 +17,36 @@ namespace AdventOfCode::DayTwo::Parser {
     const std::string kDayTwoInputFilePath = "../src/data/input_day_two.txt";
 
     /**
-     * Parse the complete file.
+     * Parse the complete file, using puzzle one logic.
      *
-     * @param round path to read from
+     * @param inputFilePath path to read from
      * @return all Rock, Paper, Scissors game rounds parsed from the file
      */
-    std::vector<RockPaperScissors::Round> parseFile(const std::string &round);
+    std::vector<RockPaperScissors::Round> parseFilePuzzleOne(const std::string &inputFilePath);
 
     /**
-     * Parse the file one round at a time, providing each one to a specified handler.
+     * Parse the file one round at a time, providing each one to a specified handler, using puzzle one logic.
      *
      * @param inputFilePath path to read from
      * @param handleRoundCallback callback to process each parsed Round
      */
-    void parseFile(const std::string &inputFilePath, const HandleRoundCallbackFunction &&handleRoundCallback);
+    void parseFilePuzzleOne(const std::string &inputFilePath, const HandleRoundCallbackFunction &&handleRoundCallback);
+
+    /**
+     * Parse the complete file, using puzzle two logic.
+     *
+     * @param inputFilePath path to read from
+     * @return all Rock, Paper, Scissors game rounds parsed from the file
+     */
+    std::vector<RockPaperScissors::Round> parseFilePuzzleTwo(const std::string &inputFilePath);
+
+    /**
+     * Parse the file one round at a time, providing each one to a specified handler, using puzzle two logic.
+     *
+     * @param inputFilePath path to read from
+     * @param handleRoundCallback callback to process each parsed Round
+     */
+    void parseFilePuzzleTwo(const std::string &inputFilePath, const HandleRoundCallbackFunction &&handleRoundCallback);
 
 } // AdventOfCode::DayTwo::Parser
 

@@ -1,8 +1,7 @@
-#include <iostream>
-#include <string>
-#include <vector>
-
 #include "DayOne.h"
+
+#include <iostream>
+
 #include "DayOneParser.h"
 #include "Elf.h"
 

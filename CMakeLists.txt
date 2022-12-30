@@ -46,7 +46,11 @@ add_executable(
         src/cpp/DayTwo.cpp
         src/cpp/DayTwo.h
         src/cpp/DayTwoParser.cpp
-        src/cpp/DayTwoParser.h src/cpp/InputFileReader.cpp src/cpp/InputFileReader.h)
+        src/cpp/DayTwoParser.h
+        src/cpp/RockPaperScissors.cpp
+        src/cpp/RockPaperScissors.h
+        src/cpp/InputFileReader.cpp
+        src/cpp/InputFileReader.h)
 
 target_link_libraries(
         advent_of_code_2022_cpp PUBLIC
@@ -79,11 +83,15 @@ add_executable(
         src/cpp/ElfBuilderTests.cpp
         src/cpp/DayTwo.cpp
         src/cpp/DayTwo.h
+        src/cpp/DayTwoTests.cpp
         src/cpp/DayTwoParser.cpp
         src/cpp/DayTwoParser.h
         src/cpp/RockPaperScissors.cpp
         src/cpp/RockPaperScissors.h
-        src/cpp/RockPaperScissorsTests.cpp src/cpp/DayTwoParserTests.cpp src/cpp/InputFileReader.cpp src/cpp/InputFileReader.h)
+        src/cpp/RockPaperScissorsTests.cpp
+        src/cpp/DayTwoParserTests.cpp
+        src/cpp/InputFileReader.cpp
+        src/cpp/InputFileReader.h)
 
 target_link_libraries(
         advent_of_code_2022_cpp_test PUBLIC

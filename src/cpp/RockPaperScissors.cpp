@@ -6,14 +6,35 @@
 
 namespace AdventOfCode::DayTwo::RockPaperScissors {
 
-    int pointValueForSelection(const Selection &selection) {
-        switch (selection) {
+    Result resultFromRound(const Round &round) {
+        switch (round.playerOneSelection()) {
             case kRock:
-                return 1;
+                switch (round.playerTwoSelection()) {
+                    case kRock:
+                        return kDraw;
+                    case Selection::kPaper:
+                        return kPlayerTwoWin;
+                    case Selection::kScissors:
+                        return kPlayerOneWin;
+                }
             case kPaper:
-                return 2;
+                switch (round.playerTwoSelection()) {
+                    case kRock:
+                        return kPlayerOneWin;
+                    case Selection::kPaper:
+                        return kDraw;
+                    case Selection::kScissors:
+                        return kPlayerTwoWin;
+                }
             case kScissors:
-                return 3;
+                switch (round.playerTwoSelection()) {
+                    case kRock:
+                        return kPlayerTwoWin;
+                    case Selection::kPaper:
+                        return kPlayerOneWin;
+                    case Selection::kScissors:
+                        return kDraw;
+                }
         }
     }
 

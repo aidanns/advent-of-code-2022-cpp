@@ -16,10 +16,16 @@ namespace AdventOfCode::DayTwo::RockPaperScissors {
         EXPECT_EQ(kRock, round.playerTwoSelection());
     }
 
-    TEST(RockPaperScissors, selectionPointValues) {
-        EXPECT_EQ(1, RockPaperScissors::pointValueForSelection(Selection::kRock));
-        EXPECT_EQ(2, RockPaperScissors::pointValueForSelection(Selection::kPaper));
-        EXPECT_EQ(3, RockPaperScissors::pointValueForSelection(Selection::kScissors));
+    TEST(RockPaperScissors, resultCalculation) {
+        EXPECT_EQ(kPlayerOneWin, resultFromRound({kRock, kScissors}));
+        EXPECT_EQ(kPlayerOneWin, resultFromRound({kPaper, kRock}));
+        EXPECT_EQ(kPlayerOneWin, resultFromRound({kScissors, kPaper}));
+        EXPECT_EQ(kDraw, resultFromRound({kRock, kRock}));
+        EXPECT_EQ(kDraw, resultFromRound({kScissors, kScissors}));
+        EXPECT_EQ(kDraw, resultFromRound({kPaper, kPaper}));
+        EXPECT_EQ(kPlayerTwoWin, resultFromRound({kScissors, kRock}));
+        EXPECT_EQ(kPlayerTwoWin, resultFromRound({kRock, kPaper}));
+        EXPECT_EQ(kPlayerTwoWin, resultFromRound({kPaper, kScissors}));
     }
 
     TEST(RockPaperScissors, roundCreationBenchmark) {
