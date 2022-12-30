@@ -8,7 +8,7 @@
 
 namespace AdventOfCode::InputFileReader {
 
-    void parseFile(const std::string &inputFilePath, const HandleLineCallbackFunction &&handleLine) {
+    void readLines(const std::string &inputFilePath, const HandleLineCallbackFunction &&handleLine) {
         std::ifstream infile(inputFilePath);
         std::string line;
 

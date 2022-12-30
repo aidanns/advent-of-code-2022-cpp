@@ -12,12 +12,12 @@ namespace AdventOfCode::InputFileReader {
     using HandleLineCallbackFunction = std::function<void(const std::string &)>;
 
     /**
-     * Parse the file one line at a time.
+     * Read lines from the file, one line at a time.
      *
      * @param inputFilePath path to read from
      * @param handleLine callback to process each line
      */
-    void parseFile(const std::string &inputFilePath, const HandleLineCallbackFunction &&handleLine);
+    void readLines(const std::string &inputFilePath, const HandleLineCallbackFunction &&handleLine);
 
 } // AdventOfCode::InputFileReader
 

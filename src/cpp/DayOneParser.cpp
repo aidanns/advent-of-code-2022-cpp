@@ -22,7 +22,7 @@ namespace AdventOfCode::DayOne::Parser {
 
         auto elfBuilder = Elf::builder();
 
-        InputFileReader::parseFile(inputFilePath, [&](const auto &line) -> void {
+        InputFileReader::readLines(inputFilePath, [&](const auto &line) -> void {
             if (!line.empty()) {
                 // TODO(aidanns): Handle the case where we have a malformed line.
                 elfBuilder.addFood(Food{std::stoi(line)});

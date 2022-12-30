@@ -19,7 +19,7 @@ namespace AdventOfCode::DayTwo::Parser {
     }
 
     void parseFile(const std::string &inputFilePath, const HandleRoundCallbackFunction &&handleRoundCallback) {
-        InputFileReader::parseFile(inputFilePath, [&](const std::string &line) -> void {
+        InputFileReader::readLines(inputFilePath, [&](const std::string &line) -> void {
             if (line.size() == 3) {
 
                 RockPaperScissors::Selection playerOneSelection;
