@@ -13,9 +13,6 @@ namespace AdventOfCode::DayTwo::Parser {
     constexpr RockPaperScissors::Selection kRoundOnePlayerOneSelection = RockPaperScissors::Selection::kPaper;
     constexpr RockPaperScissors::Selection kRoundOnePlayerTwoSelection = RockPaperScissors::Selection::kPaper;
 
-    constexpr int kDayOneInputFirstElfFirstFoodCalories = 15560;
-    constexpr int kDayOneInputFirstElfTotalCalories = 50030;
-
     TEST(DayTwoParser, Parses) {
         auto rounds = parseFile(kDayTwoInputFilePath);
 

@@ -6,6 +6,8 @@
 
 #include <fstream>
 
+#include "InputFileReader.h"
+
 namespace AdventOfCode::DayTwo::Parser {
 
     std::vector<RockPaperScissors::Round> parseFile(const std::string &inputFilePath) {
@@ -16,13 +18,9 @@ namespace AdventOfCode::DayTwo::Parser {
         return parsedRounds;
     }
 
-    void parseFile(const std::string &inputFilePath, std::function<void(RockPaperScissors::Round)> &&handleRoundCallback) {
-        std::ifstream infile(inputFilePath);
-        std::string line;
-
-        // Get the input from the input file until EOF.
-        while (std::getline(infile, line)) {
-            if (!line.empty()) {
+    void parseFile(const std::string &inputFilePath, const HandleRoundCallbackFunction &&handleRoundCallback) {
+        InputFileReader::parseFile(inputFilePath, [&](const std::string &line) -> void {
+            if (line.size() == 3) {
 
                 RockPaperScissors::Selection playerOneSelection;
                 RockPaperScissors::Selection playerTwoSelection;
@@ -40,7 +38,7 @@ namespace AdventOfCode::DayTwo::Parser {
                     default:
                         // Skip lines that have malformed components.
                         // TODO(aidanns): Log a warn message that we're dropping a line here.
-                        continue;
+                        return;
                 }
 
                 switch (line.at(2)) {
@@ -56,14 +54,14 @@ namespace AdventOfCode::DayTwo::Parser {
                     default:
                         // Skip lines that have malformed components.
                         // TODO(aidanns): Log a warn message that we're dropping a line here.
-                        continue;
+                        return;
                 }
 
                 handleRoundCallback(RockPaperScissors::Round(playerOneSelection, playerTwoSelection));
             } else {
                 // TODO(aidanns): Log a warn message that we're dropping a line here.
-                continue;
+                return;
             }
-        }
+        });
     }
 } // AdventOfCode::DayTwo::Parser

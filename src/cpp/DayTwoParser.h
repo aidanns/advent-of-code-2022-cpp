@@ -12,6 +12,8 @@
 
 namespace AdventOfCode::DayTwo::Parser {
 
+    using HandleRoundCallbackFunction = std::function<void(const RockPaperScissors::Round &)>;
+
     const std::string kDayTwoInputFilePath = "../src/data/input_day_two.txt";
 
     /**
@@ -28,7 +30,7 @@ namespace AdventOfCode::DayTwo::Parser {
      * @param inputFilePath path to read from
      * @param handleRoundCallback callback to process each parsed Round
      */
-    void parseFile(const std::string &inputFilePath, std::function<void(RockPaperScissors::Round)> &&handleRoundCallback);
+    void parseFile(const std::string &inputFilePath, const HandleRoundCallbackFunction &&handleRoundCallback);
 
 } // AdventOfCode::DayTwo::Parser
 
