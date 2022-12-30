@@ -43,7 +43,10 @@ add_executable(
         src/cpp/ElfBuilder.h
         src/cpp/Elf.cpp
         src/cpp/Elf.h
-)
+        src/cpp/DayTwo.cpp
+        src/cpp/DayTwo.h
+        src/cpp/DayTwoParser.cpp
+        src/cpp/DayTwoParser.h)
 
 target_link_libraries(
         advent_of_code_2022_cpp PUBLIC
@@ -73,7 +76,14 @@ add_executable(
         src/cpp/ElfTests.cpp
         src/cpp/ElfBuilder.cpp
         src/cpp/ElfBuilder.h
-        src/cpp/ElfBuilderTests.cpp)
+        src/cpp/ElfBuilderTests.cpp
+        src/cpp/DayTwo.cpp
+        src/cpp/DayTwo.h
+        src/cpp/DayTwoParser.cpp
+        src/cpp/DayTwoParser.h
+        src/cpp/RockPaperScissors.cpp
+        src/cpp/RockPaperScissors.h
+        src/cpp/RockPaperScissorsTests.cpp)
 
 target_link_libraries(
         advent_of_code_2022_cpp_test PUBLIC
