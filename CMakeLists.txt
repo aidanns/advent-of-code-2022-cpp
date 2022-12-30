@@ -50,7 +50,15 @@ add_executable(
         src/cpp/RockPaperScissors.cpp
         src/cpp/RockPaperScissors.h
         src/cpp/InputFileReader.cpp
-        src/cpp/InputFileReader.h)
+        src/cpp/InputFileReader.h
+        src/cpp/DayThree.cpp
+        src/cpp/DayThree.h
+        src/cpp/Item.h
+        src/cpp/Item.cpp
+        src/cpp/Rucksack.cpp
+        src/cpp/Rucksack.h
+        src/cpp/DayThreeParser.cpp
+        src/cpp/DayThreeParser.h)
 
 target_link_libraries(
         advent_of_code_2022_cpp PUBLIC
@@ -91,7 +99,18 @@ add_executable(
         src/cpp/RockPaperScissorsTests.cpp
         src/cpp/DayTwoParserTests.cpp
         src/cpp/InputFileReader.cpp
-        src/cpp/InputFileReader.h)
+        src/cpp/InputFileReader.h
+        src/cpp/DayThree.cpp
+        src/cpp/DayThree.h
+        src/cpp/Item.h
+        src/cpp/Item.cpp
+        src/cpp/ItemTests.cpp
+        src/cpp/Rucksack.cpp
+        src/cpp/Rucksack.h
+        src/cpp/RucksackTests.cpp
+        src/cpp/DayThreeParser.cpp
+        src/cpp/DayThreeParser.h
+        src/cpp/DayThreeParserTests.cpp)
 
 target_link_libraries(
         advent_of_code_2022_cpp_test PUBLIC
