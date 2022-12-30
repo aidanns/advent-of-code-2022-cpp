@@ -23,7 +23,7 @@ namespace AdventOfCode::DayTwo::RockPaperScissors {
     }
 
     TEST(RockPaperScissors, roundCreationBenchmark) {
-        ankerl::nanobench::Bench().run("Day Two - Rock, Paper, Scissors round creation", [&]() {
+        ankerl::nanobench::Bench().run("Day 2 - Rock, Paper, Scissors round creation", [&]() {
             ankerl::nanobench::doNotOptimizeAway(RockPaperScissors::Round(kRock, kPaper));
         });
     }
