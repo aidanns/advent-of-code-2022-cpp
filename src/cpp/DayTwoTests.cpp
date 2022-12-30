@@ -16,9 +16,14 @@ namespace AdventOfCode::DayTwo {
         EXPECT_EQ(9, puzzleSolution({{RockPaperScissors::Selection::kPaper, RockPaperScissors::kScissors}}));
     }
 
-    TEST(DayTwo, puzzleSolution) {
+    TEST(DayTwo, puzzleOneSolution) {
         auto input = Parser::parseFilePuzzleOne(Parser::kDayTwoInputFilePath);
         EXPECT_EQ(12740, puzzleSolution(input));
+    }
+
+    TEST (DayTwo, puzzleTwoSolution) {
+        auto input = Parser::parseFilePuzzleTwo(Parser::kDayTwoInputFilePath);
+        EXPECT_EQ(11980, puzzleSolution(input));
     }
 }
 
