@@ -4,8 +4,8 @@
 
 #include "DayThree.h"
 
+#include <algorithm>
 #include <iostream>
-#include <set>
 
 #include "DayThreeParser.h"
 
@@ -48,7 +48,7 @@ namespace AdventOfCode::DayThree {
             const Rucksack& two = input.at(i + 1);
             const Rucksack& three = input.at(i + 2);
 
-            auto rucksackTwoAndThreeContain = [&](const auto &item) -> bool {
+            auto rucksackTwoAndThreeContainsItemPredicate = [&](const auto &item) -> bool {
                 auto rucksackTwoContains = two.compartmentOne().contains(item)
                                            || two.compartmentTwo().contains(item);
                 auto rucksackThreeContains = three.compartmentOne().contains(item)
@@ -56,12 +56,12 @@ namespace AdventOfCode::DayThree {
                 return rucksackTwoContains && rucksackThreeContains;
             };
 
-            for (const auto &item : one.allUniqueItems()) {
-                if (rucksackTwoAndThreeContain(item)) {
-                    sumOfPriorities += item.priority();
-                    break;
-                }
-            }
+            std::set<Item> rucksackOneItems = one.allUniqueItems();
+            auto targetItem = std::find_if(
+                    rucksackOneItems.begin(),
+                    rucksackOneItems.end(),
+                    rucksackTwoAndThreeContainsItemPredicate);
+            sumOfPriorities += targetItem->priority();
         }
 
         return sumOfPriorities;

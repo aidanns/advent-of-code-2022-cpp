@@ -58,9 +58,9 @@ namespace AdventOfCode::DayThree {
         return *this;
     }
 
-    Rucksack Rucksack::Builder::build() {
-        return Rucksack(Rucksack::Compartment(compartmentOneContent_),
-                        Rucksack::Compartment(compartmentTwoContent_));
+    auto Rucksack::Builder::build() -> Rucksack {
+        return {Rucksack::Compartment(compartmentOneContent_),
+                Rucksack::Compartment(compartmentTwoContent_)};
     }
 
     void Rucksack::Builder::reset() {
