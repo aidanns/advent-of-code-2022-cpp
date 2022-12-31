@@ -68,7 +68,7 @@ namespace AdventOfCode::DayThree {
                 return rucksackTwoContains && rucksackThreeContains;
             };
 
-            // TODO(aidanns): Replace this with a merged std::range after upgrading Clang to support.
+            // TODO(aidanns): Replace this with a merged std::ranges after upgrading Clang to support.
             auto maybeCommonItem = std::find_if(
                     one.compartmentOne().items().begin(),
                     one.compartmentOne().items().end(),
