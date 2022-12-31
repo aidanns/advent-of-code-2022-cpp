@@ -66,10 +66,12 @@ namespace AdventOfCode::DayThree::Parser {
 
         InputFileReader::readLines(inputFilePath, [&](const std::string &line) {
 
+            // Validate that the line is valid.
             if (!lineIsValid(line)) {
                 return;
             }
 
+            // Assume valid line from this point onwards.
             for (int i = 0; i < line.length() / 2; i++) {
                 builder.withCompartmentOneContent(Item(itemTypeForValidChar(line.at(i))));
             }
