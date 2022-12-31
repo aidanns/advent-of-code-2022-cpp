@@ -4,13 +4,11 @@
 
 #include "DayThreeParser.h"
 
-#include <ranges>
-
 #include "InputFileReader.h"
 
 namespace AdventOfCode::DayThree::Parser {
 
-    std::vector<Rucksack> parseFilePuzzleOne(const std::string &inputFilePath) {
+    auto parseFilePuzzleOne(const std::filesystem::path &inputFilePath) -> Input {
         std::vector<Rucksack> rucksacks;
         parseFile(inputFilePath, [&](const auto &rucksack) {
             rucksacks.push_back(rucksack);
@@ -21,7 +19,7 @@ namespace AdventOfCode::DayThree::Parser {
     /**
      * Returns the priority for a given char, or -1 if that char is not assigned a priority.
      */
-    int priorityForCharValue(char value) noexcept {
+    auto priorityForCharValue(char value) noexcept-> int {
         // Lower case chars have ASCII values 96 - 122, we want to map in to 1 - 26.
         if (value >= 'a' && value <= 'z') {
             return static_cast<int>(value) - 96;
@@ -39,13 +37,12 @@ namespace AdventOfCode::DayThree::Parser {
     /**
      * Returns an ItemType for a given char. Performs no error handling, so must only be called with valid chars.
      */
-    ItemType itemTypeForValidChar(char c) noexcept {
+    auto itemTypeForValidChar(char c) noexcept -> ItemType {
         return static_cast<ItemType>(priorityForCharValue(c));
     }
 
-    void parseFile(const std::string &inputFilePath,
-                   const HandleRucksackCallbackFunction &&handleRucksackCallbackFunction) {
-
+    auto parseFile(const std::filesystem::path &inputFilePath,
+                   const HandleRucksackCallbackFunction &&handleRucksackCallbackFunction) -> void {
         Rucksack::Builder builder = Rucksack::Builder();
 
         auto lineIsValid = [](const std::string &line) -> bool {
@@ -53,7 +50,6 @@ namespace AdventOfCode::DayThree::Parser {
             auto charIsValid = [](const char c) {
                 return priorityForCharValue(c) != -1;
             };
-
             for (char c : line) {
                 if (!charIsValid(c)) {
                     return false;
@@ -64,8 +60,7 @@ namespace AdventOfCode::DayThree::Parser {
             return line.length() % 2 == 0;
         };
 
-        InputFileReader::readLines(inputFilePath, [&](const std::string &line) {
-
+        InputFileReader::readLines(inputFilePath, [&](const std::string &line) -> void {
             // Validate that the line is valid.
             if (!lineIsValid(line)) {
                 return;
@@ -75,7 +70,6 @@ namespace AdventOfCode::DayThree::Parser {
             for (int i = 0; i < line.length() / 2; i++) {
                 builder.withCompartmentOneContent(Item(itemTypeForValidChar(line.at(i))));
             }
-
             for (int i = line.length() / 2; i < line.length(); i++) {
                 builder.withCompartmentTwoContent(Item(itemTypeForValidChar(line.at(i))));
             }

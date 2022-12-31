@@ -19,7 +19,7 @@ namespace AdventOfCode::DayTwo {
     /**
      * Run the calculations for day two and print output to stdout.
      */
-    void run();
+    auto run() -> void;
 
     /**
      * Calculate the solution for puzzle two.
@@ -27,7 +27,7 @@ namespace AdventOfCode::DayTwo {
      * @param input input for day two
      * @return the result for puzzle one
      */
-    int puzzleSolution(const Input &input);
+    auto puzzleSolution(const Input &input) -> int;
 }
 
 #endif // DAY_TWO_H

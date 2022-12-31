@@ -8,15 +8,16 @@
 
 namespace AdventOfCode::DayTwo::Parser {
 
-    std::vector<RockPaperScissors::Round> parseFilePuzzleOne(const std::string &inputFilePath) {
-        std::vector<RockPaperScissors::Round> parsedRounds{};
-        parseFilePuzzleOne(inputFilePath, [&](const auto &round) {
+    auto parseFilePuzzleOne(const std::filesystem::path &inputFilePath) -> Input {
+        std::vector<RockPaperScissors::Round> parsedRounds;
+        parseFilePuzzleOne(inputFilePath, [&](const auto &round) -> void {
             parsedRounds.push_back(round);
         });
         return parsedRounds;
     }
 
-    void parseFilePuzzleOne(const std::string &inputFilePath, const HandleRoundCallbackFunction &&handleRoundCallback) {
+    auto parseFilePuzzleOne(const std::filesystem::path &inputFilePath,
+                            const HandleRoundCallbackFunction &&handleRoundCallback) -> void {
         InputFileReader::readLines(inputFilePath, [&](const std::string &line) -> void {
             if (line.size() == 3) {
 
@@ -63,7 +64,7 @@ namespace AdventOfCode::DayTwo::Parser {
         });
     }
 
-    std::vector<RockPaperScissors::Round> parseFilePuzzleTwo(const std::string &inputFilePath) {
+    auto parseFilePuzzleTwo(const std::filesystem::path &inputFilePath) -> Input {
         std::vector<RockPaperScissors::Round> parsedRounds{};
         parseFilePuzzleTwo(inputFilePath, [&](const auto &round) {
             parsedRounds.push_back(round);
@@ -71,7 +72,7 @@ namespace AdventOfCode::DayTwo::Parser {
         return parsedRounds;
     }
 
-    RockPaperScissors::Selection selectionThatWinsAgainst(const RockPaperScissors::Selection &selection) {
+    auto selectionThatWinsAgainst(const RockPaperScissors::Selection &selection) -> RockPaperScissors::Selection {
         switch (selection) {
             case RockPaperScissors::Selection::kScissors:
                 return RockPaperScissors::Selection::kRock;
@@ -82,11 +83,11 @@ namespace AdventOfCode::DayTwo::Parser {
         }
     }
 
-    RockPaperScissors::Selection selectionThatDrawsAgainst(const RockPaperScissors::Selection &selection) {
+    auto selectionThatDrawsAgainst(const RockPaperScissors::Selection &selection) -> RockPaperScissors::Selection {
         return selection;
     }
 
-    RockPaperScissors::Selection selectionThatLosesAgainst(const RockPaperScissors::Selection &selection) {
+    auto selectionThatLosesAgainst(const RockPaperScissors::Selection &selection) -> RockPaperScissors::Selection {
         switch (selection) {
             case RockPaperScissors::Selection::kScissors:
                 return RockPaperScissors::Selection::kPaper;
@@ -97,7 +98,8 @@ namespace AdventOfCode::DayTwo::Parser {
         }
     }
 
-    void parseFilePuzzleTwo(const std::string &inputFilePath, const HandleRoundCallbackFunction &&handleRoundCallback) {
+    auto parseFilePuzzleTwo(const std::filesystem::path &inputFilePath,
+                            const HandleRoundCallbackFunction &&handleRoundCallback)-> void {
         InputFileReader::readLines(inputFilePath, [&](const std::string &line) -> void {
             if (line.size() == 3) {
 

@@ -5,16 +5,18 @@
 #ifndef DAY_THREE_PARSER_H
 #define DAY_THREE_PARSER_H
 
+#include <filesystem>
 #include <string>
 #include <vector>
 
 #include "Rucksack.h"
+#include "DayThree.h"
 
 namespace AdventOfCode::DayThree::Parser {
 
     using HandleRucksackCallbackFunction = std::function<void(const Rucksack &)>;
 
-    const std::string kDayThreeInputFilePath = "../src/data/input_day_three.txt";
+    const auto kDayThreeInputFilePath= "../src/data/input_day_three.txt";
 
     /**
      * Parse the complete file.
@@ -22,7 +24,7 @@ namespace AdventOfCode::DayThree::Parser {
      * @param inputFilePath path to read from
      * @return all rucksack configurations parsed from the file
      */
-    std::vector<Rucksack> parseFilePuzzleOne(const std::string &inputFilePath);
+    auto parseFilePuzzleOne(const std::filesystem::path &inputFilePath) -> Input;
 
     /**
      * Parse the file one round at a time, providing each one to a specified handler.
@@ -30,7 +32,8 @@ namespace AdventOfCode::DayThree::Parser {
      * @param inputFilePath path to read from
      * @param handleRucksackCallbackFunction callback to process each parsed Rucksack
      */
-    void parseFile(const std::string &inputFilePath, const HandleRucksackCallbackFunction &&handleRucksackCallbackFunction);
+    auto parseFile(const std::filesystem::path &inputFilePath,
+                   const HandleRucksackCallbackFunction &&handleRucksackCallbackFunction) -> void;
 }
 
 #endif // DAY_THREE_PARSER_H
