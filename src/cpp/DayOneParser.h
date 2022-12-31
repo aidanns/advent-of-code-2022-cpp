@@ -5,6 +5,7 @@
 #ifndef DAY_ONE_PARSER_H
 #define DAY_ONE_PARSER_H
 
+#include <filesystem>
 #include <vector>
 #include <fstream>
 
@@ -14,7 +15,7 @@ namespace AdventOfCode::DayOne::Parser {
 
     using HandleElfCallbackFunction = std::function<void(const Elf &)>;
 
-    const std::string kDayOneInputFilePath = "../src/data/input_day_one.txt";
+    const auto kDayOneInputFilePath = "../src/data/input_day_one.txt";
 
     /**
      * Parse the complete file.
@@ -22,7 +23,7 @@ namespace AdventOfCode::DayOne::Parser {
      * @param inputFilePath path to read from
      * @return all Elf's parsed from the file
      */
-    std::vector<Elf> parseFile(const std::string &inputFilePath);
+    auto parseFile(const std::filesystem::path &inputFilePath) -> std::vector<Elf>;
 
     /**
      * Parse the file one elf at a time, providing each one to a specified handler.
@@ -30,7 +31,8 @@ namespace AdventOfCode::DayOne::Parser {
      * @param inputFilePath path to read from
      * @param handleElfCallback callback to process each parsed Elf
      */
-    void parseFile(const std::string &inputFilePath, const HandleElfCallbackFunction &&handleElfCallback);
+    auto parseFile(const std::filesystem::path &inputFilePath,
+                   const HandleElfCallbackFunction &&handleElfCallback) -> void;
 } // AdventOfCode::DayOne::Parser
 
 #endif // DAY_ONE_PARSER_H

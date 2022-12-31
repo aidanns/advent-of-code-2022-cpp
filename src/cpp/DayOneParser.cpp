@@ -10,7 +10,7 @@
 
 namespace AdventOfCode::DayOne::Parser {
 
-    std::vector<Elf> parseFile(const std::string &inputFilePath) {
+    std::vector<Elf> parseFile(const std::filesystem::path &inputFilePath) {
         std::vector<Elf> parsedElves{};
         parseFile(inputFilePath, [&](const auto &elf) {
             parsedElves.push_back(elf);
@@ -18,7 +18,7 @@ namespace AdventOfCode::DayOne::Parser {
         return parsedElves;
     }
 
-    void parseFile(const std::string &inputFilePath, const HandleElfCallbackFunction &&handleElfCallback) {
+    void parseFile(const std::filesystem::path &inputFilePath, const HandleElfCallbackFunction &&handleElfCallback) {
 
         auto elfBuilder = Elf::builder();
 

@@ -5,6 +5,7 @@
 #ifndef INPUT_FILE_READER_H
 #define INPUT_FILE_READER_H
 
+#include <filesystem>
 #include <string>
 
 namespace AdventOfCode::InputFileReader {
@@ -17,7 +18,7 @@ namespace AdventOfCode::InputFileReader {
      * @param inputFilePath path to read from
      * @param handleLine callback to process each line
      */
-    void readLines(const std::string &inputFilePath, const HandleLineCallbackFunction &&handleLine);
+    void readLines(const std::filesystem::path &inputFilePath, const HandleLineCallbackFunction &&handleLine);
 
 } // AdventOfCode::InputFileReader
 
