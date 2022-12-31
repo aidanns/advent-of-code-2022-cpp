@@ -53,7 +53,7 @@ namespace AdventOfCode::DayThree {
     TEST(DayThree, benchmarkPuzzleOne) {
         DayThree::Input input = Parser::parseFilePuzzleOne(Parser::kDayThreeInputFilePath);
 
-        ankerl::nanobench::Bench().run("Day 3 - Puzzle 1", [&]() {
+        ankerl::nanobench::Bench().run("Day 3 Puzzle 1", [&]() {
             ankerl::nanobench::doNotOptimizeAway(DayThree::puzzleOneSolution(input));
         });
     }
@@ -61,7 +61,7 @@ namespace AdventOfCode::DayThree {
     TEST(DayThree, benchmarkPuzzleTwp) {
         DayThree::Input input = Parser::parseFilePuzzleOne(Parser::kDayThreeInputFilePath);
 
-        ankerl::nanobench::Bench().run("Day 3 - Puzzle 1", [&]() {
+        ankerl::nanobench::Bench().run("Day 3 Puzzle 2", [&]() {
             ankerl::nanobench::doNotOptimizeAway(DayThree::puzzleTwoSolution(input));
         });
     }

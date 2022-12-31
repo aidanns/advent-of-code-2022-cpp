@@ -5,12 +5,13 @@
 #include "DayThree.h"
 
 #include <iostream>
+#include <set>
 
 #include "DayThreeParser.h"
 
 namespace AdventOfCode::DayThree {
 
-    void run() {
+    auto run() -> void {
         Input puzzleOneInput = Parser::parseFilePuzzleOne(Parser::kDayThreeInputFilePath);
         std::cout << "Day 3 - Puzzle 1" << std::endl
                   << "Sum of item priorities: " << puzzleOneSolution(puzzleOneInput) << std::endl;
@@ -18,7 +19,7 @@ namespace AdventOfCode::DayThree {
                   << "Sum of item priorities: " << puzzleTwoSolution(puzzleOneInput) << std::endl;
     }
 
-    int puzzleOneSolution(const Input &input) {
+    auto puzzleOneSolution(const Input &input) -> PuzzleOneSolution {
         int sumOfPriorities = 0;
         for (const auto &rucksack : input) {
             for (const auto &item : rucksack.compartmentOne().items()) {
@@ -31,9 +32,9 @@ namespace AdventOfCode::DayThree {
         return sumOfPriorities;
     }
 
-    int puzzleTwoSolution(const Input &input) {
+    auto puzzleTwoSolution(const Input &input) -> PuzzleTwoSolution {
 
-        auto inputIsValid = [](const Input &input) -> bool {
+        auto inputIsValid = [](const auto &input) -> bool {
             return input.size() % 3 == 0;
         };
 
@@ -43,29 +44,20 @@ namespace AdventOfCode::DayThree {
 
         int sumOfPriorities = 0;
         for (int i = 0; i < input.size(); i += 3) {
-            Rucksack one = input.at(i);
-            Rucksack two = input.at(i + 1);
-            Rucksack three = input.at(i + 2);
+            const Rucksack& one = input.at(i);
+            const Rucksack& two = input.at(i + 1);
+            const Rucksack& three = input.at(i + 2);
 
-            for (const auto &item : one.compartmentOne().items()) {
-                auto rucksackTwoContains = two.compartmentOne().contains(item)
-                        || two.compartmentTwo().contains(item);
-                auto rucksackThreeContains = three.compartmentOne().contains(item)
-                        || three.compartmentTwo().contains(item);
-
-                if (rucksackTwoContains && rucksackThreeContains) {
-                    sumOfPriorities += item.priority();
-                    break;
-                }
-            }
-
-            for (const auto &item : one.compartmentTwo().items()) {
+            auto rucksackTwoAndThreeContain = [&](const auto &item) -> bool {
                 auto rucksackTwoContains = two.compartmentOne().contains(item)
                                            || two.compartmentTwo().contains(item);
                 auto rucksackThreeContains = three.compartmentOne().contains(item)
                                              || three.compartmentTwo().contains(item);
+                return rucksackTwoContains && rucksackThreeContains;
+            };
 
-                if (rucksackTwoContains && rucksackThreeContains) {
+            for (const auto &item : one.allUniqueItems()) {
+                if (rucksackTwoAndThreeContain(item)) {
                     sumOfPriorities += item.priority();
                     break;
                 }

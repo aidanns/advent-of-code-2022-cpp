@@ -67,8 +67,12 @@ namespace AdventOfCode::DayThree {
         explicit Item(ItemType type);
         Item(const Item &item) noexcept = default;
 
-        auto operator==(const auto& rhs) const -> bool {
+        auto operator==(const auto &rhs) const -> bool {
             return this->priority_ == rhs.priority_;
+        }
+
+        auto operator<(const auto &rhs) const -> bool {
+            return this->priority_ < rhs.priority_;
         }
 
         [[nodiscard]] auto priority() const -> int;

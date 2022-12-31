@@ -33,6 +33,17 @@ namespace AdventOfCode::DayThree {
         return compartmentTwo_;
     }
 
+    auto Rucksack::allUniqueItems() const -> std::set<Item> {
+        std::set<Item> items;
+        for (const auto &item : compartmentOne_.items()) {
+            items.insert(item);
+        }
+        for (const auto &item : compartmentTwo_.items()) {
+            items.insert(item);
+        }
+        return items;
+    }
+
     auto Rucksack::builder() -> Builder {
         return {};
     }

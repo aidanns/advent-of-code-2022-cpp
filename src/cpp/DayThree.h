@@ -12,10 +12,9 @@
 
 namespace AdventOfCode::DayThree {
 
-    /**
-     * Input data for day three.
-     */
     using Input = std::vector<Rucksack>;
+    using PuzzleOneSolution = int;
+    using PuzzleTwoSolution = int;
 
     /**
      * Run the calculations for day three and print output to stdout.

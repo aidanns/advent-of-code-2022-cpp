@@ -5,6 +5,7 @@
 #ifndef RUCKSACK_H
 #define RUCKSACK_H
 
+#include <set>
 #include <vector>
 
 #include "Item.h"
@@ -35,8 +36,10 @@ namespace AdventOfCode::DayThree {
         };
 
         Rucksack(Compartment compartmentOne, Compartment compartmentTwo);
+
         [[nodiscard]] auto compartmentOne() const -> Compartment;
         [[nodiscard]] auto compartmentTwo() const -> Compartment;
+        [[nodiscard]] auto allUniqueItems() const -> std::set<Item>;
 
         static auto builder() -> Builder;
     private:
