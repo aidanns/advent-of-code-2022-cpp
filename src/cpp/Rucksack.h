@@ -16,29 +16,34 @@ namespace AdventOfCode::DayThree {
     public:
         class Compartment {
         public:
+            Compartment(Compartment &&other) noexcept;
+            Compartment(const Compartment &other) noexcept;
             explicit Compartment(std::vector<Item> &items);
             [[nodiscard]] auto contains(const Item &item) const -> bool;
-            [[nodiscard]] auto items() const -> std::vector<Item>;
+            [[nodiscard]] auto items() const -> const std::vector<Item> &;
         private:
-            const std::vector<Item> items_;
+            std::vector<Item> items_;
         };
 
         class Builder {
         public:
-            Builder withCompartmentOneContent(const Item &item);
-            Builder withCompartmentTwoContent(const Item &item);
+            auto withCompartmentOneContent(const Item &item) -> Builder &;
+            auto withCompartmentOneContent(Item &&item) -> Builder &;
+            auto withCompartmentTwoContent(const Item &item) -> Builder &;
+            auto withCompartmentTwoContent(Item &&item) -> Builder &;
 
-            Rucksack build();
-            void reset();
+            auto build() -> Rucksack;
+            auto reset() -> void;
         private:
             std::vector<Item> compartmentOneContent_;
             std::vector<Item> compartmentTwoContent_;
         };
 
-        Rucksack(Compartment compartmentOne, Compartment compartmentTwo);
+        Rucksack(const Rucksack &other) noexcept;
+        Rucksack(Compartment compartmentOne, Compartment compartmentTwo) noexcept;
 
-        [[nodiscard]] auto compartmentOne() const -> Compartment;
-        [[nodiscard]] auto compartmentTwo() const -> Compartment;
+        [[nodiscard]] auto compartmentOne() const -> const Compartment &;
+        [[nodiscard]] auto compartmentTwo() const -> const Compartment &;
         [[nodiscard]] auto allUniqueItems() const -> std::set<Item>;
 
         static auto builder() -> Builder;

@@ -22,12 +22,15 @@ namespace AdventOfCode::DayThree {
     auto puzzleOneSolution(const Input &input) -> PuzzleOneSolution {
         int sumOfPriorities = 0;
         for (const auto &rucksack : input) {
-            for (const auto &item : rucksack.compartmentOne().items()) {
-                if (rucksack.compartmentTwo().contains(item)) {
-                    sumOfPriorities += item.priority();
-                    break;
-                }
-            }
+            auto compartmentTwoContainsItemPredicate = [&](const auto &item) -> bool {
+                return rucksack.compartmentTwo().contains(item);
+            };
+            auto compartmentOneItems = rucksack.compartmentOne().items();
+            auto iter = std::find_if(
+                    compartmentOneItems.begin(),
+                    compartmentOneItems.end(),
+                    compartmentTwoContainsItemPredicate);
+            sumOfPriorities += iter->priority();
         }
         return sumOfPriorities;
     }

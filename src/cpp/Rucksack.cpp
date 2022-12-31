@@ -8,6 +8,9 @@
 #include <utility>
 
 namespace AdventOfCode::DayThree {
+
+    Rucksack::Compartment::Compartment(Compartment &&other) noexcept : items_(std::move(other.items_)) {}
+    Rucksack::Compartment::Compartment(const Compartment &other) noexcept = default;
     Rucksack::Compartment::Compartment(std::vector<Item> &items) : items_(std::move(items)) {}
 
     auto Rucksack::Compartment::contains(const Item &item) const -> bool {
@@ -18,18 +21,20 @@ namespace AdventOfCode::DayThree {
         }
     }
 
-    auto Rucksack::Compartment::items() const -> std::vector<Item> {
+    auto Rucksack::Compartment::items() const -> const std::vector<Item> & {
         return items_;
     }
 
-    Rucksack::Rucksack(Rucksack::Compartment compartmentOne, Rucksack::Compartment compartmentTwo)
+    Rucksack::Rucksack(Rucksack::Compartment compartmentOne, Rucksack::Compartment compartmentTwo) noexcept
         : compartmentOne_(std::move(compartmentOne)), compartmentTwo_(std::move(compartmentTwo)) {}
 
-    auto Rucksack::compartmentOne() const -> Rucksack::Compartment {
+    Rucksack::Rucksack(const Rucksack &other) noexcept = default;
+
+    auto Rucksack::compartmentOne() const -> const Rucksack::Compartment & {
         return compartmentOne_;
     }
 
-    auto Rucksack::compartmentTwo() const -> Rucksack::Compartment {
+    auto Rucksack::compartmentTwo() const -> const Rucksack::Compartment & {
         return compartmentTwo_;
     }
 
@@ -48,23 +53,35 @@ namespace AdventOfCode::DayThree {
         return {};
     }
 
-    Rucksack::Builder Rucksack::Builder::withCompartmentOneContent(const Item &item) {
+    auto Rucksack::Builder::withCompartmentOneContent(const Item &item) -> Rucksack::Builder & {
         compartmentOneContent_.push_back(item);
         return *this;
     }
 
-    Rucksack::Builder Rucksack::Builder::withCompartmentTwoContent(const Item &item) {
+    auto Rucksack::Builder::withCompartmentTwoContent(const Item &item) -> Rucksack::Builder & {
         compartmentTwoContent_.push_back(item);
         return *this;
     }
 
     auto Rucksack::Builder::build() -> Rucksack {
-        return {Rucksack::Compartment(compartmentOneContent_),
-                Rucksack::Compartment(compartmentTwoContent_)};
+        Rucksack r = {Rucksack::Compartment(compartmentOneContent_),
+                      Rucksack::Compartment(compartmentTwoContent_)};
+        reset();
+        return r;
     }
 
     void Rucksack::Builder::reset() {
         compartmentOneContent_ = std::vector<Item>();
         compartmentTwoContent_ = std::vector<Item>();
+    }
+
+    auto Rucksack::Builder::withCompartmentOneContent(Item &&item) -> Rucksack::Builder & {
+        compartmentOneContent_.push_back(std::move(item));
+        return *this;
+    }
+
+    auto Rucksack::Builder::withCompartmentTwoContent(Item &&item) -> Rucksack::Builder & {
+        compartmentTwoContent_.push_back(std::move(item));
+        return *this;
     }
 } // AdventOfCode::DayThree
