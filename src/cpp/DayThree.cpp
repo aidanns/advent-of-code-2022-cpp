@@ -34,11 +34,8 @@ namespace AdventOfCode::DayThree {
 
     auto puzzleTwoSolution(const Input &input) -> PuzzleTwoSolution {
 
-        auto inputIsValid = [](const auto &input) -> bool {
-            return input.size() % 3 == 0;
-        };
-
-        if (!inputIsValid(input)) {
+        bool inputIsValid = (input.size() % 3 == 0);
+        if (!inputIsValid) {
             return -1;
         }
 
@@ -50,18 +47,19 @@ namespace AdventOfCode::DayThree {
 
             auto rucksackTwoAndThreeContainsItemPredicate = [&](const auto &item) -> bool {
                 auto rucksackTwoContains = two.compartmentOne().contains(item)
-                                           || two.compartmentTwo().contains(item);
+                        || two.compartmentTwo().contains(item);
                 auto rucksackThreeContains = three.compartmentOne().contains(item)
-                                             || three.compartmentTwo().contains(item);
+                        || three.compartmentTwo().contains(item);
                 return rucksackTwoContains && rucksackThreeContains;
             };
 
             std::set<Item> rucksackOneItems = one.allUniqueItems();
-            auto targetItem = std::find_if(
+            // TODO(aidanns): Update this to use ranges when new Clang installed.
+            auto commonItem = std::find_if(
                     rucksackOneItems.begin(),
                     rucksackOneItems.end(),
                     rucksackTwoAndThreeContainsItemPredicate);
-            sumOfPriorities += targetItem->priority();
+            sumOfPriorities += commonItem->priority();
         }
 
         return sumOfPriorities;
