@@ -18,6 +18,28 @@ namespace AdventOfCode::DayThree {
             .build()}));
     }
 
+    TEST(DayThree, puzzleTwoResults) {
+        EXPECT_EQ(1, puzzleTwoSolution({
+            Rucksack::builder()
+                    .withCompartmentOneContent(Item{ItemType::a})
+                    .withCompartmentOneContent(Item{ItemType::b})
+                    .withCompartmentTwoContent(Item{ItemType::b})
+                    .withCompartmentTwoContent(Item{ItemType::c})
+                    .build(),
+            Rucksack::builder()
+                     .withCompartmentOneContent(Item{ItemType::a})
+                     .withCompartmentOneContent(Item{ItemType::d})
+                     .withCompartmentTwoContent(Item{ItemType::d})
+                     .withCompartmentTwoContent(Item{ItemType::e})
+                     .build(),
+            Rucksack::builder()
+                     .withCompartmentOneContent(Item{ItemType::a})
+                     .withCompartmentOneContent(Item{ItemType::f})
+                     .withCompartmentTwoContent(Item{ItemType::f})
+                     .withCompartmentTwoContent(Item{ItemType::g})
+                     .build()}));
+    }
+
     TEST(DayThree, puzzleOneSolution) {
         auto input = Parser::parseFilePuzzleOne(Parser::kDayThreeInputFilePath);
         EXPECT_EQ(8039, puzzleOneSolution(input));

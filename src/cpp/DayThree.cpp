@@ -32,6 +32,15 @@ namespace AdventOfCode::DayThree {
     }
 
     int puzzleTwoSolution(const Input &input) {
+
+        auto inputIsValid = [](const Input &input) -> bool {
+            return input.size() % 3 == 0;
+        };
+
+        if (!inputIsValid(input)) {
+            return -1;
+        }
+
         int sumOfPriorities = 0;
         for (int i = 0; i < input.size(); i += 3) {
             Rucksack one = input.at(i);
