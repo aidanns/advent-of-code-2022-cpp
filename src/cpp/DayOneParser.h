@@ -13,7 +13,7 @@
 
 namespace AdventOfCode::DayOne::Parser {
 
-    using HandleElfCallbackFunction = std::function<void(const Elf &)>;
+    using HandleElfCallbackFunction = std::function<void(Elf &&)>;
 
     const auto kDayOneInputFilePath = "../src/data/input_day_one.txt";
 

@@ -10,13 +10,15 @@
 
 namespace AdventOfCode {
 
-    ElfBuilder ElfBuilder::addFood(const Food &food) {
-        carriedFood_.push_back(food);
+    auto ElfBuilder::addFood(Food &&food) -> ElfBuilder & {
+        carriedFood_.push_back(std::move(food));
         return *this;
     }
 
-    Elf ElfBuilder::build() {
-        return Elf{carriedFood_};
+    auto ElfBuilder::build() -> Elf {
+        Elf e = Elf{carriedFood_};
+        reset();
+        return e;
     }
 
     void ElfBuilder::reset() {

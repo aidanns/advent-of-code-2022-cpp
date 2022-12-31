@@ -52,13 +52,13 @@ namespace AdventOfCode {
         EXPECT_EQ(30, elf.carriedFood().at(2).calories());
     }
 
-    TEST(ElfBuilder, BuilderCanBeReused) {
+    TEST(ElfBuilder, BuilderCanNotBeReused) {
         ElfBuilder builder{};
 
         const auto elfOne = builder.addFood(Food{100}).build();
         const auto elfTwo = builder.build();
 
-        EXPECT_EQ(1, elfTwo.carriedFood().size());
+        EXPECT_EQ(0, elfTwo.carriedFood().size());
     }
 
 }

@@ -31,9 +31,9 @@ namespace AdventOfCode::DayOne::Parser {
     TEST(DayOneParser, benchmarkParseWithCallback) {
         ankerl::nanobench::Bench().run("Day 1 Parse - Callback", [&]() {
             std::vector<Elf> elves;
-            Parser::parseFile(Parser::kDayOneInputFilePath,[&](const Elf &elf) {
-                   elves.push_back(elf);
-               });
+            Parser::parseFile(Parser::kDayOneInputFilePath,[&](auto &&elf) {
+               elves.push_back(std::forward<decltype(elf)>(elf));
+            });
             ankerl::nanobench::doNotOptimizeAway(elves);
         });
     }

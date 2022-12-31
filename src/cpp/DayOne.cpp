@@ -19,7 +19,7 @@ namespace AdventOfCode::DayOne {
 
     auto puzzleOneSolutionWithoutStorage() -> int {
         int largestCalorieCountElf = 0;
-        Parser::parseFile(Parser::kDayOneInputFilePath, [&](const auto &elf) -> void {
+        Parser::parseFile(Parser::kDayOneInputFilePath, [&](auto &&elf) -> void {
             if (elf.totalCarriedCalories() > largestCalorieCountElf) {
                 largestCalorieCountElf = elf.totalCarriedCalories();
             }

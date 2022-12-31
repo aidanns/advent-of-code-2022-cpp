@@ -12,8 +12,8 @@ namespace AdventOfCode::DayOne::Parser {
 
     std::vector<Elf> parseFile(const std::filesystem::path &inputFilePath) {
         std::vector<Elf> parsedElves{};
-        parseFile(inputFilePath, [&](const auto &elf) {
-            parsedElves.push_back(elf);
+        parseFile(inputFilePath, [&](auto &&elf) {
+            parsedElves.push_back(std::forward<decltype(elf)>(elf));
         });
         return parsedElves;
     }
@@ -22,13 +22,12 @@ namespace AdventOfCode::DayOne::Parser {
 
         auto elfBuilder = Elf::builder();
 
-        InputFileReader::readLines(inputFilePath, [&](const auto &line) -> void {
+        InputFileReader::readLines(inputFilePath, [&](auto &&line) -> void {
             if (!line.empty()) {
                 // TODO(aidanns): Handle the case where we have a malformed line.
                 elfBuilder.addFood(Food{std::stoi(line)});
             } else {
                 handleElfCallback(elfBuilder.build());
-                elfBuilder.reset();
             }
         });
     }

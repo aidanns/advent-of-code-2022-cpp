@@ -18,9 +18,9 @@ namespace AdventOfCode {
     public:
         explicit ElfBuilder() = default;
 
-        ElfBuilder addFood(const Food &food);
+        auto addFood(Food &&food) -> ElfBuilder &;
 
-        Elf build();
+        auto build() -> Elf;
 
         /**
          * Resets the builder, equivalent to creation of a new builder.
