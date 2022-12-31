@@ -10,8 +10,8 @@ namespace AdventOfCode::DayThree::Parser {
 
     auto parseFilePuzzleOne(const std::filesystem::path &inputFilePath) -> Input {
         std::vector<Rucksack> rucksacks;
-        parseFile(inputFilePath, [&](const auto &&rucksack) {
-            rucksacks.push_back(std::move(rucksack));
+        parseFile(inputFilePath, [&](auto &&rucksack) {
+            rucksacks.push_back(std::forward<decltype(rucksack)>(rucksack));
         });
         return rucksacks;
     }
@@ -45,7 +45,7 @@ namespace AdventOfCode::DayThree::Parser {
                    const HandleRucksackCallbackFunction &&handleRucksackCallbackFunction) -> void {
         Rucksack::Builder builder = Rucksack::Builder();
 
-        auto lineIsValid = [](const std::string &line) -> bool {
+        auto lineIsValid = [](const auto &line) -> bool {
             // Valid chars are a-z and A-Z.
             auto charIsValid = [](const char c) {
                 return priorityForCharValue(c) != -1;
@@ -60,17 +60,17 @@ namespace AdventOfCode::DayThree::Parser {
             return line.length() % 2 == 0;
         };
 
-        InputFileReader::readLines(inputFilePath, [&](const std::string &line) -> void {
+        InputFileReader::readLines(inputFilePath, [&](auto &&line) -> void {
             // Validate that the line is valid.
             if (!lineIsValid(line)) {
                 return;
             }
 
             // Assume valid line from this point onwards.
-            for (int i = 0; i < line.length() / 2; i++) {
+            for (size_t i = 0; i < line.length() / 2; i++) {
                 builder.withCompartmentOneContent(Item(itemTypeForValidChar(line.at(i))));
             }
-            for (int i = line.length() / 2; i < line.length(); i++) {
+            for (size_t i = line.length() / 2; i < line.length(); i++) {
                 builder.withCompartmentTwoContent(Item(itemTypeForValidChar(line.at(i))));
             }
 

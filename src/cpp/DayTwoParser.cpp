@@ -10,17 +10,16 @@ namespace AdventOfCode::DayTwo::Parser {
 
     auto parseFilePuzzleOne(const std::filesystem::path &inputFilePath) -> Input {
         std::vector<RockPaperScissors::Round> parsedRounds;
-        parseFilePuzzleOne(inputFilePath, [&](const auto &round) -> void {
-            parsedRounds.push_back(round);
+        parseFilePuzzleOne(inputFilePath, [&](auto &&round) -> void {
+            parsedRounds.push_back(std::forward<decltype(round)>(round));
         });
         return parsedRounds;
     }
 
     auto parseFilePuzzleOne(const std::filesystem::path &inputFilePath,
                             const HandleRoundCallbackFunction &&handleRoundCallback) -> void {
-        InputFileReader::readLines(inputFilePath, [&](const std::string &line) -> void {
+        InputFileReader::readLines(inputFilePath, [&](auto &&line) -> void {
             if (line.size() == 3) {
-
                 RockPaperScissors::Selection playerOneSelection;
                 RockPaperScissors::Selection playerTwoSelection;
 
@@ -65,9 +64,9 @@ namespace AdventOfCode::DayTwo::Parser {
     }
 
     auto parseFilePuzzleTwo(const std::filesystem::path &inputFilePath) -> Input {
-        std::vector<RockPaperScissors::Round> parsedRounds{};
-        parseFilePuzzleTwo(inputFilePath, [&](const auto &round) {
-            parsedRounds.push_back(round);
+        std::vector<RockPaperScissors::Round> parsedRounds;
+        parseFilePuzzleTwo(inputFilePath, [&](auto &&round) {
+            parsedRounds.push_back(std::forward<decltype(round)>(round));
         });
         return parsedRounds;
     }
@@ -100,7 +99,7 @@ namespace AdventOfCode::DayTwo::Parser {
 
     auto parseFilePuzzleTwo(const std::filesystem::path &inputFilePath,
                             const HandleRoundCallbackFunction &&handleRoundCallback)-> void {
-        InputFileReader::readLines(inputFilePath, [&](const std::string &line) -> void {
+        InputFileReader::readLines(inputFilePath, [&](auto &&line) -> void {
             if (line.size() == 3) {
 
                 RockPaperScissors::Selection playerOneSelection;

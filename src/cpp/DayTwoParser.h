@@ -14,7 +14,7 @@
 
 namespace AdventOfCode::DayTwo::Parser {
 
-    using HandleRoundCallbackFunction = std::function<void(const RockPaperScissors::Round &)>;
+    using HandleRoundCallbackFunction = std::function<void(RockPaperScissors::Round &&)>;
 
     const auto kDayTwoInputFilePath = "../src/data/input_day_two.txt";
 

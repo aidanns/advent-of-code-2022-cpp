@@ -10,7 +10,7 @@
 
 namespace AdventOfCode::InputFileReader {
 
-    using HandleLineCallbackFunction = std::function<void(const std::string &)>;
+    using HandleLineCallbackFunction = std::function<void(std::string &&)>;
 
     /**
      * Read lines from the file, one line at a time.

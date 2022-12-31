@@ -14,7 +14,7 @@ namespace AdventOfCode::InputFileReader {
 
         // Get the input from the input file until EOF.
         while (std::getline(infile, line)) {
-            handleLine(line);
+            handleLine(std::move(line));
         }
     }
 } // AdventOfCode::InputFileReader

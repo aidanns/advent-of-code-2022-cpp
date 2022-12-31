@@ -30,8 +30,8 @@ namespace AdventOfCode::DayThree::Parser {
     TEST(DayThreeParser, benchmarkParseWithCallback) {
         ankerl::nanobench::Bench().run("Day 3 Parse - Callback", [&]() {
             std::vector<Rucksack> rucksacks;
-            Parser::parseFile(Parser::kDayThreeInputFilePath, [&](const Rucksack &rucksack) {
-                rucksacks.push_back(rucksack);
+            Parser::parseFile(Parser::kDayThreeInputFilePath, [&](auto &&rucksack) {
+                rucksacks.push_back(std::forward<decltype(rucksack)>(rucksack));
             });
             ankerl::nanobench::doNotOptimizeAway(rucksacks);
         });
