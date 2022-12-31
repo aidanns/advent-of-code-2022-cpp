@@ -27,7 +27,8 @@ namespace AdventOfCode::DayThree {
      * @param input input for day three
      * @return the result for puzzle one
      */
-    int puzzleOneSolution(const Input &input);
+    auto puzzleOneSolution(const Input &input) -> PuzzleOneSolution ;
+    auto puzzleOneSolutionNoStorage() -> PuzzleOneSolution;
 
     /**
      * Calculate the solution for puzzle two.
@@ -35,7 +36,8 @@ namespace AdventOfCode::DayThree {
      * @param input input for day three
      * @return the result for puzzle two
      */
-    int puzzleTwoSolution(const Input &input);
+    auto puzzleTwoSolution(const Input &input) -> PuzzleTwoSolution ;
+
 }
 
 #endif // DAY_THREE_H

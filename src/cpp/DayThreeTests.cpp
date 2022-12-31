@@ -58,6 +58,19 @@ namespace AdventOfCode::DayThree {
         });
     }
 
+    TEST(DayThree, benchmarkPuzzleOneWithStorage) {
+        ankerl::nanobench::Bench().run("Day 3 Puzzle 1: +Parse +Storage", [&]() {
+            DayThree::Input input = Parser::parseFilePuzzleOne(Parser::kDayThreeInputFilePath);
+            ankerl::nanobench::doNotOptimizeAway(DayThree::puzzleOneSolution(input));
+        });
+    }
+
+    TEST(DayThree, benchmarkPuzzleOneNoStorage) {
+        ankerl::nanobench::Bench().run("Day 3 Puzzle 1: +Parse -Storage", [&]() {
+            ankerl::nanobench::doNotOptimizeAway(DayThree::puzzleOneSolutionNoStorage());
+        });
+    }
+
     TEST(DayThree, benchmarkPuzzleTwp) {
         DayThree::Input input = Parser::parseFilePuzzleOne(Parser::kDayThreeInputFilePath);
 

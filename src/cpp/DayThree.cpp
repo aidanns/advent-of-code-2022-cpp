@@ -19,18 +19,30 @@ namespace AdventOfCode::DayThree {
                   << "Sum of item priorities: " << puzzleTwoSolution(puzzleOneInput) << std::endl;
     }
 
+    auto puzzleOneInnerLoop(const Rucksack &r) -> int {
+        auto compartmentTwoContainsItemPredicate = [&](const auto &item) -> bool {
+            return r.compartmentTwo().contains(item);
+        };
+        auto compartmentOneItems = r.compartmentOne().items();
+        auto iter = std::find_if(
+                compartmentOneItems.begin(),
+                compartmentOneItems.end(),
+                compartmentTwoContainsItemPredicate);
+        return iter != compartmentOneItems.end() ? iter->priority() : 0;
+    }
+
+    auto puzzleOneSolutionNoStorage() -> PuzzleOneSolution {
+        int sumOfPriorities = 0;
+        Parser::parseFile(Parser::kDayThreeInputFilePath, [&](auto &&rucksack) {
+            sumOfPriorities += puzzleOneInnerLoop(std::forward<decltype(rucksack)>(rucksack));
+        });
+        return sumOfPriorities;
+    }
+
     auto puzzleOneSolution(const Input &input) -> PuzzleOneSolution {
         int sumOfPriorities = 0;
         for (const auto &rucksack : input) {
-            auto compartmentTwoContainsItemPredicate = [&](const auto &item) -> bool {
-                return rucksack.compartmentTwo().contains(item);
-            };
-            auto compartmentOneItems = rucksack.compartmentOne().items();
-            auto iter = std::find_if(
-                    compartmentOneItems.begin(),
-                    compartmentOneItems.end(),
-                    compartmentTwoContainsItemPredicate);
-            sumOfPriorities += iter->priority();
+            sumOfPriorities += puzzleOneInnerLoop(rucksack);
         }
         return sumOfPriorities;
     }
