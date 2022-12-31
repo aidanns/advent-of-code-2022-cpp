@@ -102,6 +102,7 @@ add_executable(
         src/cpp/InputFileReader.h
         src/cpp/DayThree.cpp
         src/cpp/DayThree.h
+        src/cpp/DayThreeTests.cpp
         src/cpp/Item.h
         src/cpp/Item.cpp
         src/cpp/ItemTests.cpp

@@ -4,24 +4,15 @@
 
 #include "Item.h"
 
+#include <type_traits>
+
 namespace AdventOfCode::DayThree {
 
-    int priorityForItemValue(char value) noexcept {
-        // Lower case chars have ASCII values 96 - 122, we want to map in to 1 - 26.
-        if (value >= 'a' && value <= 'z') {
-            return static_cast<int>(value) - 96;
-        }
-
-        // Upper case chars have ASCII values 65 - 90, we want to map in to 27 - 52.
-        if (value >= 'A' && value <= 'Z') {
-            return static_cast<int>(value) - 38;
-        }
-
-        // TODO(aidanns): Better error handling here.
-        return -1;
+    int priorityForItemType(ItemType type) {
+        return static_cast<typename std::underlying_type<ItemType>::type>(type);
     }
 
-    Item::Item(char value) : priority_(priorityForItemValue(value)) {}
+    Item::Item(ItemType type) : priority_(priorityForItemType(type)) {}
 
     auto Item::priority() const -> int {
         return priority_;

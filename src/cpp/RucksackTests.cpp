@@ -11,10 +11,10 @@ namespace AdventOfCode::DayThree {
 
     TEST(Rucksack, creation) {
         auto rucksack = Rucksack::builder()
-                .withCompartmentOneContent(Item('a'))
-                .withCompartmentOneContent(Item('b'))
-                .withCompartmentTwoContent(Item('c'))
-                .withCompartmentTwoContent(Item('b'))
+                .withCompartmentOneContent(Item(ItemType::a))
+                .withCompartmentOneContent(Item(ItemType::b))
+                .withCompartmentTwoContent(Item(ItemType::c))
+                .withCompartmentTwoContent(Item(ItemType::b))
                 .build();
 
         EXPECT_EQ(1, rucksack.compartmentOne().items().at(0).priority());
@@ -25,10 +25,10 @@ namespace AdventOfCode::DayThree {
 
     TEST(Rucksack, contains) {
         auto rucksack = Rucksack::builder()
-                .withCompartmentOneContent(Item('a'))
+                .withCompartmentOneContent(Item(ItemType::a))
                 .build();
 
-        EXPECT_EQ(true, rucksack.compartmentOne().contains(Item('a')));
-        EXPECT_EQ(false, rucksack.compartmentOne().contains(Item('b')));
+        EXPECT_EQ(true, rucksack.compartmentOne().contains(Item(ItemType::a)));
+        EXPECT_EQ(false, rucksack.compartmentOne().contains(Item(ItemType::b)));
     }
 }

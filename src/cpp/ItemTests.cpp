@@ -7,14 +7,14 @@
 
 #include "Item.h"
 
-namespace AdventOfCode::DayTwo::Item {
+namespace AdventOfCode::DayThree {
 
     TEST(Item, creation) {
-        EXPECT_EQ(1, AdventOfCode::DayThree::Item{'a'}.priority());
-        EXPECT_EQ(2, AdventOfCode::DayThree::Item{'b'}.priority());
-        EXPECT_EQ(26, AdventOfCode::DayThree::Item{'z'}.priority());
-        EXPECT_EQ(27, AdventOfCode::DayThree::Item{'A'}.priority());
-        EXPECT_EQ(28, AdventOfCode::DayThree::Item{'B'}.priority());
-        EXPECT_EQ(52, AdventOfCode::DayThree::Item{'Z'}.priority());
+        EXPECT_EQ(1, Item{ItemType::a}.priority());
+        EXPECT_EQ(2, Item{ItemType::b}.priority());
+        EXPECT_EQ(26, Item{ItemType::z}.priority());
+        EXPECT_EQ(27, Item{ItemType::A}.priority());
+        EXPECT_EQ(28, Item{ItemType::B}.priority());
+        EXPECT_EQ(52, Item{ItemType::Z}.priority());
     }
 }
