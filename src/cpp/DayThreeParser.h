@@ -14,7 +14,7 @@
 
 namespace AdventOfCode::DayThree::Parser {
 
-    using HandleRucksackCallbackFunction = std::function<void(const Rucksack &)>;
+    using HandleRucksackCallbackFunction = std::function<void(Rucksack &&)>;
 
     const auto kDayThreeInputFilePath= "../src/data/input_day_three.txt";
 

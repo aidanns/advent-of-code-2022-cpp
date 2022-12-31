@@ -56,13 +56,20 @@ namespace AdventOfCode::DayThree {
                 return rucksackTwoContains && rucksackThreeContains;
             };
 
-            std::set<Item> rucksackOneItems = one.allUniqueItems();
-            // TODO(aidanns): Update this to use ranges when new Clang installed.
-            auto commonItem = std::find_if(
-                    rucksackOneItems.begin(),
-                    rucksackOneItems.end(),
+            // TODO(aidanns): Replace this with a merged std::range after upgrading Clang to support.
+            auto maybeCommonItem = std::find_if(
+                    one.compartmentOne().items().begin(),
+                    one.compartmentOne().items().end(),
                     rucksackTwoAndThreeContainsItemPredicate);
-            sumOfPriorities += commonItem->priority();
+            if (maybeCommonItem != one.compartmentOne().items().end()) {
+                sumOfPriorities += maybeCommonItem->priority();
+            } else {
+                auto commonItem = std::find_if(
+                        one.compartmentTwo().items().begin(),
+                        one.compartmentTwo().items().end(),
+                        rucksackTwoAndThreeContainsItemPredicate);
+                sumOfPriorities += commonItem->priority();
+            }
         }
 
         return sumOfPriorities;

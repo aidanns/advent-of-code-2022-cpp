@@ -18,7 +18,7 @@ namespace AdventOfCode::DayThree {
         public:
             Compartment(Compartment &&other) noexcept;
             Compartment(const Compartment &other) noexcept;
-            explicit Compartment(std::vector<Item> &items);
+            explicit Compartment(std::vector<Item> &&items);
             [[nodiscard]] auto contains(const Item &item) const -> bool;
             [[nodiscard]] auto items() const -> const std::vector<Item> &;
         private:
@@ -40,7 +40,8 @@ namespace AdventOfCode::DayThree {
         };
 
         Rucksack(const Rucksack &other) noexcept;
-        Rucksack(Compartment compartmentOne, Compartment compartmentTwo) noexcept;
+        Rucksack(Rucksack &&other) noexcept;
+        Rucksack(Compartment &&compartmentOne, Compartment &&compartmentTwo) noexcept;
 
         [[nodiscard]] auto compartmentOne() const -> const Compartment &;
         [[nodiscard]] auto compartmentTwo() const -> const Compartment &;

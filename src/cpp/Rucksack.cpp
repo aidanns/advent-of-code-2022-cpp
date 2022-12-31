@@ -9,9 +9,9 @@
 
 namespace AdventOfCode::DayThree {
 
-    Rucksack::Compartment::Compartment(Compartment &&other) noexcept : items_(std::move(other.items_)) {}
+    Rucksack::Compartment::Compartment(Compartment &&other) noexcept = default;
     Rucksack::Compartment::Compartment(const Compartment &other) noexcept = default;
-    Rucksack::Compartment::Compartment(std::vector<Item> &items) : items_(std::move(items)) {}
+    Rucksack::Compartment::Compartment(std::vector<Item> &&items) : items_(std::move(items)) {}
 
     auto Rucksack::Compartment::contains(const Item &item) const -> bool {
         if (std::find(items_.begin(), items_.end(), item) != items_.end()) {
@@ -25,10 +25,11 @@ namespace AdventOfCode::DayThree {
         return items_;
     }
 
-    Rucksack::Rucksack(Rucksack::Compartment compartmentOne, Rucksack::Compartment compartmentTwo) noexcept
+    Rucksack::Rucksack(Rucksack::Compartment &&compartmentOne, Rucksack::Compartment &&compartmentTwo) noexcept
         : compartmentOne_(std::move(compartmentOne)), compartmentTwo_(std::move(compartmentTwo)) {}
 
     Rucksack::Rucksack(const Rucksack &other) noexcept = default;
+    Rucksack::Rucksack(Rucksack &&other) noexcept = default;
 
     auto Rucksack::compartmentOne() const -> const Rucksack::Compartment & {
         return compartmentOne_;
@@ -64,8 +65,8 @@ namespace AdventOfCode::DayThree {
     }
 
     auto Rucksack::Builder::build() -> Rucksack {
-        Rucksack r = {Rucksack::Compartment(compartmentOneContent_),
-                      Rucksack::Compartment(compartmentTwoContent_)};
+        Rucksack r = {std::move(Rucksack::Compartment(std::move(compartmentOneContent_))),
+                      std::move(Rucksack::Compartment(std::move(compartmentTwoContent_)))};
         reset();
         return r;
     }
