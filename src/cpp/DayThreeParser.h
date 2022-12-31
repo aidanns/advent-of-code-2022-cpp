@@ -30,7 +30,7 @@ namespace AdventOfCode::DayThree::Parser {
      * @param inputFilePath path to read from
      * @param handleRucksackCallbackFunction callback to process each parsed Rucksack
      */
-    void parseFilePuzzleOne(const std::string &inputFilePath, const HandleRucksackCallbackFunction &&handleRucksackCallbackFunction);
+    void parseFile(const std::string &inputFilePath, const HandleRucksackCallbackFunction &&handleRucksackCallbackFunction);
 }
 
 #endif // DAY_THREE_PARSER_H

@@ -12,7 +12,7 @@ namespace AdventOfCode::DayThree::Parser {
 
     std::vector<Rucksack> parseFilePuzzleOne(const std::string &inputFilePath) {
         std::vector<Rucksack> rucksacks;
-        parseFilePuzzleOne(inputFilePath, [&](const auto &rucksack) {
+        parseFile(inputFilePath, [&](const auto &rucksack) {
             rucksacks.push_back(rucksack);
         });
         return rucksacks;
@@ -43,8 +43,8 @@ namespace AdventOfCode::DayThree::Parser {
         return static_cast<ItemType>(priorityForCharValue(c));
     }
 
-    void parseFilePuzzleOne(const std::string &inputFilePath,
-                            const HandleRucksackCallbackFunction &&handleRucksackCallbackFunction) {
+    void parseFile(const std::string &inputFilePath,
+                   const HandleRucksackCallbackFunction &&handleRucksackCallbackFunction) {
 
         Rucksack::Builder builder = Rucksack::Builder();
 
