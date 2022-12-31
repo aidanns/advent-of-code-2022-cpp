@@ -7,7 +7,7 @@
 
 namespace AdventOfCode::DayOne {
 
-    int puzzleOneSolution(const Input &input) {
+    auto puzzleOneSolution(const Input &input) -> int {
         int largestCalorieCountForElf = 0;
         for (const auto & elf : input) {
             if (elf.totalCarriedCalories() > largestCalorieCountForElf) {
@@ -17,9 +17,9 @@ namespace AdventOfCode::DayOne {
         return largestCalorieCountForElf;
     }
 
-    int puzzleOneSolutionWithoutStorage() {
+    auto puzzleOneSolutionWithoutStorage() -> int {
         int largestCalorieCountElf = 0;
-        Parser::parseFile(Parser::kDayOneInputFilePath, [&](const Elf &elf) {
+        Parser::parseFile(Parser::kDayOneInputFilePath, [&](const auto &elf) -> void {
             if (elf.totalCarriedCalories() > largestCalorieCountElf) {
                 largestCalorieCountElf = elf.totalCarriedCalories();
             }
@@ -27,11 +27,11 @@ namespace AdventOfCode::DayOne {
         return largestCalorieCountElf;
     }
 
-    int puzzleOneSolutionStrawman(const Input &input) {
+    auto puzzleOneSolutionStrawman(const Input &input) -> int {
         return 69528;
     }
 
-    int puzzleTwoSolution(const Input &input) {
+    auto puzzleTwoSolution(const Input &input) -> int {
 
         int largestCalorieCount = 0;
         int secondLargestCalorieCount = 0;
@@ -53,7 +53,7 @@ namespace AdventOfCode::DayOne {
         return largestCalorieCount + secondLargestCalorieCount + thirdLargestCalorieCount;
     }
 
-    void run() {
+    auto run() -> void {
         Input input = Parser::parseFile(Parser::kDayOneInputFilePath);
 
         std::cout << "Day 1 - Puzzle 1" << std::endl
