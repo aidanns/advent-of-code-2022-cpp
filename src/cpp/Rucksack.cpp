@@ -11,13 +11,11 @@ namespace AdventOfCode::DayThree {
     Rucksack::Compartment::Compartment(std::vector<Item> &items) : items_(std::move(items)) {}
 
     auto Rucksack::Compartment::contains(const Item &item) const -> bool {
-        // TODO(aidanns): Improve this performance.
-        for (const auto &containedItem : items_) {
-            if (containedItem.priority() == item.priority()) {
-                return true;
-            }
+        if (std::find(items_.begin(), items_.end(), item) != items_.end()) {
+            return true;
+        } else {
+            return false;
         }
-        return false;
     }
 
     auto Rucksack::Compartment::items() const -> std::vector<Item> {

@@ -65,6 +65,12 @@ namespace AdventOfCode::DayThree {
     class Item {
     public:
         explicit Item(ItemType type);
+        Item(const Item &item) noexcept = default;
+
+        auto operator==(const auto& rhs) const -> bool {
+            return this->priority_ == rhs.priority_;
+        }
+
         [[nodiscard]] auto priority() const -> int;
     private:
         const int priority_;
