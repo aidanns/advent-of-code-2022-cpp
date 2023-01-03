@@ -6,6 +6,7 @@
 #define DAY_THREE_PARSER_H
 
 #include <filesystem>
+#include <functional>
 #include <string>
 #include <vector>
 

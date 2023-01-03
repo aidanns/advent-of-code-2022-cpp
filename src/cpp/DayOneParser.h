@@ -6,6 +6,7 @@
 #define DAY_ONE_PARSER_H
 
 #include <filesystem>
+#include <functional>
 #include <vector>
 #include <fstream>
 

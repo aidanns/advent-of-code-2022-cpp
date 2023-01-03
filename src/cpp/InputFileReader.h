@@ -6,6 +6,7 @@
 #define INPUT_FILE_READER_H
 
 #include <filesystem>
+#include <functional>
 #include <string>
 
 namespace AdventOfCode::InputFileReader {

@@ -6,6 +6,7 @@
 #define ADVENT_OF_CODE_2022_CPP_DAYTWOPARSER_H
 
 #include <filesystem>
+#include <functional>
 #include <string>
 #include <vector>
 
