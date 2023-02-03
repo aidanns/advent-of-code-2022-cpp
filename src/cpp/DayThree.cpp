@@ -6,6 +6,7 @@
 
 #include <algorithm>
 #include <iostream>
+#include <ranges>
 
 #include "DayThreeParser.h"
 
@@ -68,18 +69,15 @@ namespace AdventOfCode::DayThree {
                 return rucksackTwoContains && rucksackThreeContains;
             };
 
-            // TODO(aidanns): Replace this with a merged std::ranges after upgrading Clang to support.
-            auto maybeCommonItem = std::find_if(
-                    one.compartmentOne().items().begin(),
-                    one.compartmentOne().items().end(),
+            auto maybeCommonItem = std::ranges::find_if(
+                    one.compartmentOne().items(),
                     rucksackTwoAndThreeContainsItemPredicate);
+
             if (maybeCommonItem != one.compartmentOne().items().end()) {
                 sumOfPriorities += maybeCommonItem->priority();
             } else {
-                auto commonItem = std::find_if(
-                        one.compartmentTwo().items().begin(),
-                        one.compartmentTwo().items().end(),
-                        rucksackTwoAndThreeContainsItemPredicate);
+                auto commonItem = std::ranges::find_if(one.compartmentTwo().items(),
+                                                       rucksackTwoAndThreeContainsItemPredicate);
                 sumOfPriorities += commonItem->priority();
             }
         }

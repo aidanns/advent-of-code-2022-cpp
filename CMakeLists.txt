@@ -3,6 +3,8 @@ project(advent_of_code_2022_cpp VERSION 0.1.0)
 
 set(CMAKE_CXX_STANDARD 20)
 set(CMAKE_CXX_STANDARD_REQUIRED True)
+# Statically link libraries so we can run in a Docker scratch container.
+set(BUILD_SHARED_LIBS OFF)
 
 include(FetchContent)
 FetchContent_Declare(
@@ -10,7 +12,7 @@ FetchContent_Declare(
         GIT_REPOSITORY https://github.com/google/googletest.git
         GIT_TAG release-1.12.1)
 FetchContent_Declare(asio
-        GIT_REPOSITORY git@github.com:chriskohlhoff/asio.git
+        GIT_REPOSITORY https://github.com/chriskohlhoff/asio.git
         GIT_TAG asio-1-24-0
         CONFIGURE_COMMAND ""
         BUILD_COMMAND "")
@@ -129,3 +131,32 @@ target_include_directories(
 
 include(GoogleTest)
 gtest_discover_tests(advent_of_code_2022_cpp_test)
+
+# Add a command that allows the input file to be copied to the build directory.
+add_custom_command(
+        OUTPUT input_day_one.txt
+        COMMAND mkdir -p var/data
+        COMMAND cp ${CMAKE_CURRENT_SOURCE_DIR}/src/data/input_day_one.txt ./var/data/input_day_one.txt
+        DEPENDS ${CMAKE_CURRENT_SOURCE_DIR}/src/data/input_day_one.txt
+        VERBATIM)
+# Add a target that runs that command.
+add_custom_target(input_day_one
+        DEPENDS input_day_one.txt)
+# Make the build target depend on that target.
+add_dependencies(advent_of_code_2022_cpp input_day_one)
+
+add_custom_command(
+        OUTPUT Dockerfile
+        COMMAND cp ${CMAKE_CURRENT_SOURCE_DIR}/Dockerfile ./Dockerfile
+        DEPENDS ${CMAKE_CURRENT_SOURCE_DIR}/Dockerfile
+        VERBATIM)
+add_custom_target(dockerfile DEPENDS Dockerfile)
+add_dependencies(advent_of_code_2022_cpp dockerfile)
+
+add_custom_command(
+        OUTPUT docker-compose.yml
+        COMMAND cp ${CMAKE_CURRENT_SOURCE_DIR}/docker-compose.yml ./docker-compose.yml
+        DEPENDS ${CMAKE_CURRENT_SOURCE_DIR}/docker-compose.yml
+        VERBATIM)
+add_custom_target(docker_compose_yml DEPENDS docker-compose.yml)
+add_dependencies(advent_of_code_2022_cpp docker_compose_yml)

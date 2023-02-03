@@ -1,0 +1,6 @@
+version: '2'
+
+services:
+  advent_of_code:
+    build: .
+    command: /advent_of_code_2022_cpp
